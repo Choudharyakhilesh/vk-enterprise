@@ -1,0 +1,365 @@
+@import "tailwindcss";
+
+:root {
+  /* Premium Summer Color Palette */
+  --background: #ffffff;
+  --foreground: #ffffff;
+
+  /* Primary Summer Colors */
+  /* --primary: #1e3a8a;  */
+  --primary: #cc9547;
+  --text-primary-foreground: #ffffff;
+
+  /* Secondary Colors */
+  --secondary: #e8d8bd; /* Very Light Gray */
+  --secondary-foreground: #f0e9e0;
+
+  /* Accent Colors */
+  --accent: #e5e5e5;
+  --accent-light: #bfbfbf;
+
+  /* Summer Pastels */
+  --pastel-mint: #c8e6c9; /* Mint Green */
+  --pastel-lavender: #e1bee7; /* Lavender */
+  --pastel-peach: #ffccbc; /* Peach */
+  --pastel-coral: #ffab91; /* Coral */
+
+  /* Neutral Shades */
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --border: #1a1a1a;
+  --input: #ffffff;
+  --ring: #1e3a8a;
+
+  /* Typography */
+  --font-heading: "Playfair Display", serif;
+
+  --font-body: "Inter", sans-serif;
+  --font-accent: "Cormorant Garamond", serif;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-text-primary-foreground: var(--text-primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-heading);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Premium Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+
+.premium-heading {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+
+.accent-text {
+  font-family: var(--font-accent);
+  font-style: italic;
+}
+
+/* Premium Layout */
+.side-padding {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.premium-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (min-width: 768px) {
+  .premium-container {
+    padding: 0 40px;
+  }
+}
+
+/* Premium Cards */
+.premium-card {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary);
+}
+
+/* Premium Buttons */
+.premium-button {
+  background: var(--primary);
+  color: var(--text-primary-foreground);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.premium-button:hover {
+  background: var(--pastel-coral);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.premium-button-outline {
+  background: transparent;
+  color: var(--foreground);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.premium-button-outline:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+/* Summer Gradient Backgrounds */
+.summer-gradient-1 {
+  background: linear-gradient(135deg, #fff3e0 0%, #f8bbd0 100%);
+}
+
+.summer-gradient-2 {
+  background: linear-gradient(135deg, #b3e5fc 0%, #c8e6c9 100%);
+}
+
+.summer-gradient-3 {
+  background: linear-gradient(135deg, #e1bee7 0%, #ffccbc 100%);
+}
+
+/* Product Image Hover Effects */
+.product-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.product-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.product-image-container:hover .product-image-overlay {
+  opacity: 1;
+}
+
+/* Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-float {
+  animation: float 2s ease-in-out infinite;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Loading Skeleton */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(219, 219, 219);
+  border-radius: 10px;
+}
+
+/* ::-webkit-scrollbar-thumb:hover {
+  background: var(--pastel-coral);
+} */
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+  .premium-heading {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .premium-heading {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .premium-heading {
+    font-size: 3rem;
+    line-height: 1.2;
+  }
+}
+
+.website-bg {
+  background: #ffff;
+}
+
+/* White theme overrides */
+.bg-neutral-900 {
+  background-color: #ffffff !important;
+}
+
+/* .text-white {
+  color: #1f2937 !important;
+} */
+
+.border-white\/10 {
+  border-color: #e5e7eb !important;
+}
+
+.border-white\/20 {
+  border-color: #d1d5db !important;
+}
+
+.text-white\/60 {
+  color: #6b7280 !important;
+}
+
+.text-white\/70 {
+  color: #4b5563 !important;
+}
+
+.text-white\/80 {
+  color: #374151 !important;
+}
+
+.text-white\/40 {
+  color: #9ca3af !important;
+}
+
+/* Ensure card backgrounds are white */
+.website-bg.text-black {
+  background: #ffffff !important;
+  color: #1f2937 !important;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #fff !important;
+  /* top: 200px !important; */
+  width: 38px !important;
+  height: 38px !important;
+  background: rgba(0, 0, 0, 0.45) !important;
+  border-radius: 50% !important;
+  backdrop-filter: blur(4px);
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: 0.3s ease !important;
+}
+
+.swiper-navigation-icon {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  width: 50% !important;
+  height: 50% !important;
+}
+
+.font-playfair {
+  font-family: "Playfair Display", serif;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+  }
+}
