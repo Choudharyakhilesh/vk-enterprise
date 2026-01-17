@@ -1,42 +1,38 @@
-"use client";
-import { Star, Quote } from "lucide-react";
-import { useEffect, useState } from "react";
+'use client';
+import { Quote } from 'lucide-react';
+import { useEffect, useState } from 'react';
 
 export function TestimonialsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const testimonials = [
     {
-      name: "Jessica Martinez",
-      role: "Fashion Enthusiast",
-      image:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop",
+      name: 'Jessica Martinez',
+      role: 'Fashion Enthusiast',
+      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop',
       rating: 5,
-      text: "ShopHub has completely transformed my shopping experience! The quality of products is outstanding.",
+      text: 'ShopHub has completely transformed my shopping experience! The quality of products is outstanding.',
     },
     {
-      name: "Robert Johnson",
-      role: "Tech Professional",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
+      name: 'Robert Johnson',
+      role: 'Tech Professional',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
       rating: 5,
-      text: "Fast shipping and great deals. The website is easy to navigate and checkout is smooth.",
+      text: 'Fast shipping and great deals. The website is easy to navigate and checkout is smooth.',
     },
     {
-      name: "Emily Chen",
-      role: "Small Business Owner",
-      image:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop",
+      name: 'Emily Chen',
+      role: 'Small Business Owner',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop',
       rating: 5,
-      text: "Amazing product selection and extremely convenient for busy schedules. Love the service!",
+      text: 'Amazing product selection and extremely convenient for busy schedules. Love the service!',
     },
     {
-      name: "Michael Brown",
-      role: "Fitness Coach",
-      image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
+      name: 'Michael Brown',
+      role: 'Fitness Coach',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop',
       rating: 5,
-      text: "Top-notch quality and hassle-free return policy. Every purchase exceeded expectations.",
+      text: 'Top-notch quality and hassle-free return policy. Every purchase exceeded expectations.',
     },
   ];
 
@@ -72,8 +68,8 @@ export function TestimonialsSection() {
                   key={testimonial.name}
                   className={`transition-all duration-700 ${
                     index === activeIndex
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 absolute inset-0 translate-y-10 pointer-events-none"
+                      ? 'opacity-100 translate-y-0'
+                      : 'opacity-0 absolute inset-0 translate-y-10 pointer-events-none'
                   }`}
                 >
                   {/* Message */}
@@ -108,8 +104,8 @@ export function TestimonialsSection() {
               onClick={() => setActiveIndex(index)}
               className={`transition-all duration-300 rounded-full ${
                 index === activeIndex
-                  ? "w-12 h-2 bg-white"
-                  : "w-3 h-3 bg-white/40 hover:bg-white/70"
+                  ? 'w-12 h-2 bg-white'
+                  : 'w-3 h-3 bg-white/40 hover:bg-white/70'
               }`}
             />
           ))}

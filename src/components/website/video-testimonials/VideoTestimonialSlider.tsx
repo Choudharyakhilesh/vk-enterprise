@@ -1,6 +1,6 @@
-"use client";
-import { useState, useRef, useEffect } from "react";
-import { Play, Pause, Volume2, VolumeX, ChevronLeft, ChevronRight } from "lucide-react";
+'use client';
+import { useState, useRef, useEffect } from 'react';
+import { Play, Pause, Volume2, VolumeX, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export function VideoTestimonialSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -11,47 +11,47 @@ export function VideoTestimonialSlider() {
   const videoTestimonials = [
     {
       id: 1,
-      name: "Priya Sharma",
-      role: "Fashion Boutique Owner",
+      name: 'Priya Sharma',
+      role: 'Fashion Boutique Owner',
       videoUrl:
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+        'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
       thumbnail:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=400&fit=crop",
+        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=400&fit=crop',
       rating: 5,
-      text: "VK Enterprise provides exceptional quality products with amazing service!",
+      text: 'VK Enterprise provides exceptional quality products with amazing service!',
     },
     {
       id: 2,
-      name: "Rahul Patel",
-      role: "Retail Manager",
+      name: 'Rahul Patel',
+      role: 'Retail Manager',
       videoUrl:
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+        'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
       thumbnail:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop",
+        'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop',
       rating: 5,
-      text: "Best bulk supplier in the market. Quality and service are outstanding!",
+      text: 'Best bulk supplier in the market. Quality and service are outstanding!',
     },
     {
       id: 3,
-      name: "Anita Desai",
-      role: "Clothing Store Owner",
+      name: 'Anita Desai',
+      role: 'Clothing Store Owner',
       videoUrl:
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+        'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
       thumbnail:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&h=400&fit=crop",
+        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&h=400&fit=crop',
       rating: 5,
       text: "I've been working with VK Enterprise for 5 years. Always satisfied!",
     },
     {
       id: 4,
-      name: "Vikram Singh",
-      role: "Textile Business",
+      name: 'Vikram Singh',
+      role: 'Textile Business',
       videoUrl:
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+        'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
       thumbnail:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=400&fit=crop",
+        'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=400&fit=crop',
       rating: 5,
-      text: "Excellent product range and competitive prices. Highly recommended!",
+      text: 'Excellent product range and competitive prices. Highly recommended!',
     },
   ];
 
@@ -119,8 +119,8 @@ export function VideoTestimonialSlider() {
                 onClick={() => setActiveIndex(index)}
                 className={`transition-all rounded-full ${
                   index === activeIndex
-                    ? "w-12 h-2 bg-white"
-                    : "w-3 h-3 bg-white/40 hover:bg-white/70"
+                    ? 'w-12 h-2 bg-white'
+                    : 'w-3 h-3 bg-white/40 hover:bg-white/70'
                 }`}
               />
             ))}
@@ -141,8 +141,8 @@ export function VideoTestimonialSlider() {
                 key={testimonial.id}
                 className={`transition-all duration-700 ${
                   index === activeIndex
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 absolute inset-0 translate-y-10 pointer-events-none"
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 absolute inset-0 translate-y-10 pointer-events-none'
                 }`}
               >
                 <div className="grid md:grid-cols-2">
@@ -195,7 +195,7 @@ export function VideoTestimonialSlider() {
                     </div>
 
                     <blockquote className="text-2xl mb-6 leading-relaxed">
-                      "{testimonial.text}"
+                      {` "{testimonial.text}"`}
                     </blockquote>
 
                     <div className="flex items-center gap-4">

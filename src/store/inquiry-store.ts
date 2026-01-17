@@ -1,9 +1,9 @@
 
+import { API_PREFIX } from "@/constants/api-routes";
 import httpClient from "@/lib/http-client";
-import { API_PREFIX, ApiRoutes } from "@/constants/api-routes";
 
-import { create } from "zustand";
 import { enqueueSnackbar } from "notistack";
+import { create } from "zustand";
 
 export type IResponseType = {
   status: boolean | string;
@@ -19,7 +19,7 @@ export type IStore = {
   apiCreateInquirySticky: (data: object) => Promise<IResponseType | null>;
 };
 
-export const useInquiryManagementStore = create<IStore>((set, get) => ({
+export const useInquiryManagementStore = create<IStore>((set) => ({
   createInquiryLoading: false,
 
   createInquiryStickeyLoading: false,

@@ -179,21 +179,23 @@
 //   );
 // }
 
-"use client";
+'use client';
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, EffectFade } from "swiper/modules";
-import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation, EffectFade } from 'swiper/modules';
+import { motion } from 'framer-motion';
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/effect-fade";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/effect-fade';
 
-import { ShoppingBag, Sparkles } from "lucide-react";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { useHomeStore } from "@/store/home-store";
-import { useRouter } from "next/navigation";
+import { ShoppingBag, Sparkles } from 'lucide-react';
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { IHomePage, useHomeStore } from '@/store/home-store';
+import { useRouter } from 'next/navigation';
+
+type Banner = IHomePage['banners'][number];
 
 export default function EnhancedHeroCarousel() {
   const router = useRouter();
@@ -214,7 +216,7 @@ export default function EnhancedHeroCarousel() {
           loop
           className="h-full"
         >
-          {banners.map((banner: any) => (
+          {banners.map((banner: Banner) => (
             <SwiperSlide key={banner.id}>
               {({ isActive }) => (
                 <div className="relative w-full h-full">
@@ -268,7 +270,7 @@ export default function EnhancedHeroCarousel() {
                         <Button
                           size="lg"
                           className="flex items-center px-6 py-3 text-white shadow-lg transition-all"
-                          onClick={() => router.push("/all-products")}
+                          onClick={() => router.push('/all-products')}
                         >
                           <ShoppingBag className="w-5 h-5 mr-2" />
                           Explore Collections

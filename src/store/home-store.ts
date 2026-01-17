@@ -55,6 +55,8 @@ export interface IHomePage {
     title: string;
     image: string;
     banner_image: string;
+    short_descp: string;
+    long_description: string;
   }[]
 }
 
@@ -84,7 +86,7 @@ export type IStore = {
   getSearchDetails: (data: object) => Promise<IResponseType | null>;
 };
 
-export const useHomeStore = create<IStore>((set, get) => ({
+export const useHomeStore = create<IStore>((set) => ({
   homeDataLoading: false,
 
   homePageData: null,
@@ -131,7 +133,7 @@ export const useHomeStore = create<IStore>((set, get) => ({
         allBlogsListLoading: false,
       });
       return resp;
-    } catch (error) {
+    } catch {
       set({ allBlogsListLoading: false });
       return null;
     }

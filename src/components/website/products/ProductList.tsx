@@ -1,13 +1,13 @@
-"use client";
-import { IProducts, useProductsStore } from "@/store/products-store";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import { useEffect, useState } from "react";
-import { ProductCard } from "./ProductCard";
-import { QuickViewModal } from "./QuickViewModal";
-import { useRouter } from "next/navigation";
-import { useTopLoader } from "nextjs-toploader";
-import Nodata from "@/lib/no-data";
+'use client';
+import { IProducts, useProductsStore } from '@/store/products-store';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ProductCard } from './ProductCard';
+import { QuickViewModal } from './QuickViewModal';
+import { useRouter } from 'next/navigation';
+import { useTopLoader } from 'nextjs-toploader';
+import Nodata from '@/lib/no-data';
 
 export function ProductList() {
   const { start } = useTopLoader();
@@ -36,7 +36,7 @@ export function ProductList() {
         <h2 className="text-3xl md:text-5xl text-stone-900">Latest Collections</h2>
         <div className="h-1 w-20 bg-primary mx-auto rounded-full" />
         <h3 className="text-lg text-stone-600 max-w-2xl mx-auto font-light">
-          Explore our exclusive range of premium women's wear, crafted for elegance and comfort.
+          {`Explore our exclusive range of premium women's wear, crafted for elegance and comfort.`}
         </h3>
       </div>
 

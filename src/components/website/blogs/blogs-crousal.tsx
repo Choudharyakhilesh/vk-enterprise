@@ -1,20 +1,18 @@
-"use client";
+'use client';
 
-import { IBlog, useHomeStore } from "@/store/home-store";
-import { useEffect } from "react";
+import { IBlog, useHomeStore } from '@/store/home-store';
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
-import { start } from "repl";
-import { useTopLoader } from "nextjs-toploader";
+import { Button } from '@/components/ui/button';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { useTopLoader } from 'nextjs-toploader';
 
 export function BlogSectionCrousal() {
   const router = useRouter();
@@ -62,9 +60,7 @@ export function BlogSectionCrousal() {
 
                 {/* Content */}
                 <div className="p-3">
-                  <h3 className="text-lg text-black font-semibold line-clamp-1">
-                    {blog.title}
-                  </h3>
+                  <h3 className="text-lg text-black font-semibold line-clamp-1">{blog.title}</h3>
 
                   <p className="text-sm text-gray-600 mt-2 line-clamp-1">{blog.short_desc}</p>
                   {Array.isArray(blog.tags) && blog.tags.length > 0 && (

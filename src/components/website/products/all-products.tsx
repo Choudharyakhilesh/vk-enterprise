@@ -1,33 +1,39 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox"; // Checkbox install kar lena agar nahi hai
+'use client';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox'; // Checkbox install kar lena agar nahi hai
+import { Input } from '@/components/ui/input';
 import {
   Sheet,
+  SheetClose,
   SheetContent,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-  SheetFooter,
-  SheetClose,
-} from "@/components/ui/sheet"; // Shadcn Sheet component
-import { IProducts, useProductsStore } from "@/store/products-store";
-import { AnimatePresence, motion } from "framer-motion";
-import { Search, X, Filter, ChevronRight } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
-import { ProductCard } from "./ProductCard";
-import { QuickViewModal } from "./QuickViewModal";
-import Nodata from "@/lib/no-data";
+} from '@/components/ui/sheet'; // Shadcn Sheet component
+import Nodata from '@/lib/no-data';
+import { IProducts, useProductsStore } from '@/store/products-store';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ChevronRight, Search, X } from 'lucide-react';
+import { useEffect, useMemo, useState } from 'react';
+import { ProductCard } from './ProductCard';
+import { QuickViewModal } from './QuickViewModal';
+
+interface BadgeProps {
+  children: React.ReactNode;
+  className?: string;
+  variant?: 'default' | 'secondary';
+}
 
 export function AllProductList() {
   const [selectedProduct, setSelectedProduct] = useState<IProducts | null>(null);
   const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState('');
   const [isDesktop, setIsDesktop] = useState(false);
 
   // 1. Multiple Category Selection State
-  const [selectedCategories, setSelectedCategories] = useState<string[]>(["All"]);
-  const [tempSelected, setTempSelected] = useState<string[]>(["All"]); // Drawer ke liye temporary state
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(['All']);
+  const [tempSelected, setTempSelected] = useState<string[]>(['All']); // Drawer ke liye temporary state
 
   const { getAllProductsList, allProductsListData, getProductCategory, allCategoryListData } =
     useProductsStore();
@@ -43,14 +49,14 @@ export function AllProductList() {
     };
 
     checkScreen();
-    window.addEventListener("resize", checkScreen);
+    window.addEventListener('resize', checkScreen);
 
-    return () => window.removeEventListener("resize", checkScreen);
+    return () => window.removeEventListener('resize', checkScreen);
   }, []);
 
   const allCategories = useMemo(() => {
-    if (!allCategoryListData) return ["All"];
-    return ["All", ...allCategoryListData.map((cat) => cat.name)];
+    if (!allCategoryListData) return ['All'];
+    return ['All', ...allCategoryListData.map((cat) => cat.name)];
   }, [allCategoryListData]);
 
   // const visibleCategories = allCategories.slice(0, 6);
@@ -60,12 +66,12 @@ export function AllProductList() {
 
   const handleCategoryToggle = (cat: string) => {
     setTempSelected((prev) => {
-      if (cat === "All") return ["All"];
+      if (cat === 'All') return ['All'];
 
-      const newSelection = prev.filter((item) => item !== "All");
+      const newSelection = prev.filter((item) => item !== 'All');
       if (newSelection.includes(cat)) {
         const filtered = newSelection.filter((item) => item !== cat);
-        return filtered.length === 0 ? ["All"] : filtered;
+        return filtered.length === 0 ? ['All'] : filtered;
       } else {
         return [...newSelection, cat];
       }
@@ -82,8 +88,7 @@ export function AllProductList() {
       allProductsListData?.filter((product) => {
         const matchesSearch = product.title?.toLowerCase().includes(searchQuery.toLowerCase());
         const matchesCategory =
-          selectedCategories.includes("All") ||
-          selectedCategories.includes(product.category_name);
+          selectedCategories.includes('All') || selectedCategories.includes(product.category_name);
 
         return matchesSearch && matchesCategory;
       }) || []
@@ -91,8 +96,8 @@ export function AllProductList() {
   }, [allProductsListData, searchQuery, selectedCategories]);
 
   const clearAllSelectedCategories = () => {
-    setSelectedCategories(["All"]);
-    setTempSelected(["All"]); // drawer state bhi reset rahe
+    setSelectedCategories(['All']);
+    setTempSelected(['All']); // drawer state bhi reset rahe
   };
 
   return (
@@ -114,8 +119,8 @@ export function AllProductList() {
                 onClick={() => setSelectedCategories([cat])}
                 className={`px-4 py-1.5 rounded-full text-[10px] font-bold  uppercase tracking-widest transition-all border ${
                   selectedCategories.length === 1 && selectedCategories[0] === cat
-                    ? "bg-stone-900 text-white border-stone-900"
-                    : "bg-white text-stone-500 border-stone-200 hover:border-stone-300"
+                    ? 'bg-stone-900 text-white border-stone-900'
+                    : 'bg-white text-stone-500 border-stone-200 hover:border-stone-300'
                 }`}
               >
                 {cat}
@@ -182,7 +187,7 @@ export function AllProductList() {
         </div>
 
         {/* Selected Tags Display */}
-        {!selectedCategories.includes("All") && (
+        {!selectedCategories.includes('All') && (
           <div className="flex flex-wrap items-center gap-2">
             {selectedCategories.map((cat) => (
               <Badge
@@ -195,7 +200,7 @@ export function AllProductList() {
                   className="w-3 h-3 cursor-pointer"
                   onClick={() => {
                     const newCats = selectedCategories.filter((c) => c !== cat);
-                    setSelectedCategories(newCats.length === 0 ? ["All"] : newCats);
+                    setSelectedCategories(newCats.length === 0 ? ['All'] : newCats);
                   }}
                 />
               </Badge>
@@ -247,8 +252,8 @@ export function AllProductList() {
           <Button
             variant="default"
             onClick={() => {
-              setSearchQuery("");
-              setSelectedCategories(["All"]);
+              setSearchQuery('');
+              setSelectedCategories(['All']);
             }}
             className=" text-black"
           >
@@ -266,8 +271,7 @@ export function AllProductList() {
   );
 }
 
-// Helper components missing in snippet
-function Badge({ children, className, variant }: any) {
+function Badge({ children, className = '' }: BadgeProps) {
   return (
     <span
       className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${className}`}

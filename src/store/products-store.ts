@@ -94,7 +94,7 @@ export const useProductsStore = create<IStore>((set) => ({
         allProductsListLoading: false,
       });
       return resp;
-    } catch (error) {
+    } catch {
       set({ allProductsListLoading: false });
       return null;
     }

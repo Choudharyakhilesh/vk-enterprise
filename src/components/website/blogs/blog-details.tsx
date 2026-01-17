@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { formatDateTimeToDDMMMYYYY } from "@/lib/utils";
-import { IBlog, useHomeStore } from "@/store/home-store";
-import { ArrowLeft, Calendar, Share2 } from "lucide-react";
-import Image from "next/image";
-import { useParams, useRouter } from "next/navigation";
-import { useTopLoader } from "nextjs-toploader";
-import { useEffect } from "react";
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { formatDateTimeToDDMMMYYYY } from '@/lib/utils';
+import { IBlog, useHomeStore } from '@/store/home-store';
+import { ArrowLeft, Calendar } from 'lucide-react';
+import Image from 'next/image';
+import { useParams, useRouter } from 'next/navigation';
+import { useTopLoader } from 'nextjs-toploader';
+import { useEffect } from 'react';
 
 export default function BlogDetails() {
   const { getBlogDetails, blogDetailsLoading, blogDeatilsData } = useHomeStore();
@@ -54,7 +54,7 @@ export default function BlogDetails() {
                 {blogDeatilsData?.image ? (
                   <Image
                     src={blogDeatilsData.image}
-                    alt={blogDeatilsData?.title || "Blog image"}
+                    alt={blogDeatilsData?.title || 'Blog image'}
                     fill
                     priority
                     className="object-cover"
@@ -78,10 +78,10 @@ export default function BlogDetails() {
                   </span>
                 )}
                 <Badge
-                  variant={blogDeatilsData?.status === "1" ? "success" : "destructive"}
+                  variant={blogDeatilsData?.status === '1' ? 'success' : 'destructive'}
                   className="text-[10px] font-bold uppercase tracking-widest"
                 >
-                  {blogDeatilsData?.status === "1" ? "• Active" : "• Inactive"}
+                  {blogDeatilsData?.status === '1' ? '• Active' : '• Inactive'}
                 </Badge>
               </div>
 
@@ -120,8 +120,8 @@ export default function BlogDetails() {
                 <div
                   className="text-slate-800 leading-[1.8] text-md overflow-y-auto pr-4 custom-scrollbar"
                   style={{
-                    maxHeight: "calc(1.8rem * 10)",
-                    scrollbarWidth: "thin",
+                    maxHeight: 'calc(1.8rem * 10)',
+                    scrollbarWidth: 'thin',
                   }}
                 >
                   <div className="space-y-6 pb-10">{blogDeatilsData.content}</div>
@@ -156,9 +156,7 @@ export default function BlogDetails() {
 
                 {/* Blog Info */}
                 <div className="p-3 pt-2 flex flex-col flex-grow">
-                  <h3 className="text-lg text-black font-semibold line-clamp-1">
-                    {blog.title}
-                  </h3>
+                  <h3 className="text-lg text-black font-semibold line-clamp-1">{blog.title}</h3>
 
                   <p className="text-slate-500 text-sm line-clamp-1 mb-4 leading-relaxed">
                     {blog.short_desc}

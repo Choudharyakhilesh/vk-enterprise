@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { useProductsStore } from "@/store/products-store";
-import { ArrowLeft, Loader2, Tag, Shirt } from "lucide-react"; // Added MessageCircle icon for button
-import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+import { IProducts, useProductsStore } from '@/store/products-store';
+import { ArrowLeft, Loader2, Tag, Shirt } from 'lucide-react'; // Added MessageCircle icon for button
+import { useParams, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function ProductDetailsPage() {
   const params = useParams();
@@ -68,7 +68,7 @@ export default function ProductDetailsPage() {
           <div>
             <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-stone-100 relative group shadow-lg border border-stone-100 sticky top-24">
               <img
-                src={product.images?.[selectedImage] || "/placeholder.png"}
+                src={product.images?.[selectedImage] || '/placeholder.png'}
                 alt={product.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
@@ -120,9 +120,7 @@ export default function ProductDetailsPage() {
                     <Tag className="w-5 h-5 text-stone-600" />
                   </div>
                   <div>
-                    <p className="text-xs text-stone-500 uppercase font-bold mb-1">
-                      Style Code
-                    </p>
+                    <p className="text-xs text-stone-500 uppercase font-bold mb-1">Style Code</p>
                     <p className="text-stone-900 font-medium text-lg">{product.style_code}</p>
                   </div>
                 </div>
@@ -140,8 +138,8 @@ export default function ProductDetailsPage() {
                       onClick={() => setSelectedImage(idx)}
                       className={`aspect-[3/4] rounded-lg overflow-hidden border-2 transition-all shadow-sm ${
                         selectedImage === idx
-                          ? "border-secondary ring-2 ring-secondary-100 opacity-100"
-                          : "border-transparent opacity-50 hover:opacity-100"
+                          ? 'border-secondary ring-2 ring-secondary-100 opacity-100'
+                          : 'border-transparent opacity-50 hover:opacity-100'
                       }`}
                     >
                       <img src={img} alt="thumbnail" className="w-full h-full object-cover" />
@@ -177,7 +175,7 @@ export default function ProductDetailsPage() {
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12">
-              {relatedProducts.map((p: any) => (
+              {relatedProducts.map((p: IProducts) => (
                 <div
                   key={p.id}
                   onClick={() => router.push(`/productsdetails/${p.id}`)}
@@ -185,7 +183,7 @@ export default function ProductDetailsPage() {
                 >
                   <div className="aspect-[3/4] bg-stone-100 rounded-2xl overflow-hidden mb-5 shadow-sm group-hover:shadow-md transition-all border border-stone-50">
                     <img
-                      src={p.images?.[0] || "/placeholder.png"}
+                      src={p.images?.[0] || '/placeholder.png'}
                       alt={p.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />

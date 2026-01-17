@@ -1,48 +1,48 @@
-import { Truck, Shield, CreditCard, Headphones, RefreshCw, Award } from "lucide-react";
+import { Truck, Shield, CreditCard, Headphones, RefreshCw, Award } from 'lucide-react';
 
 export function FeaturesSection() {
   const features = [
     {
       icon: Truck,
-      title: "Free Shipping",
-      description: "Free delivery on orders over $50",
-      color: "from-blue-500 to-cyan-500",
-      delay: "0s",
+      title: 'Free Shipping',
+      description: 'Free delivery on orders over $50',
+      color: 'from-blue-500 to-cyan-500',
+      delay: '0s',
     },
     {
       icon: Shield,
-      title: "Secure Payment",
-      description: "100% secure transactions",
-      color: "from-green-500 to-emerald-500",
-      delay: "0.1s",
+      title: 'Secure Payment',
+      description: '100% secure transactions',
+      color: 'from-green-500 to-emerald-500',
+      delay: '0.1s',
     },
     {
       icon: CreditCard,
-      title: "Easy Returns",
-      description: "30-day money back guarantee",
-      color: "from-purple-500 to-pink-500",
-      delay: "0.2s",
+      title: 'Easy Returns',
+      description: '30-day money back guarantee',
+      color: 'from-purple-500 to-pink-500',
+      delay: '0.2s',
     },
     {
       icon: Headphones,
-      title: "24/7 Support",
-      description: "Dedicated customer service",
-      color: "from-orange-500 to-red-500",
-      delay: "0.3s",
+      title: '24/7 Support',
+      description: 'Dedicated customer service',
+      color: 'from-orange-500 to-red-500',
+      delay: '0.3s',
     },
     {
       icon: RefreshCw,
-      title: "Quality Guarantee",
-      description: "Premium quality products",
-      color: "from-indigo-500 to-blue-500",
-      delay: "0.4s",
+      title: 'Quality Guarantee',
+      description: 'Premium quality products',
+      color: 'from-indigo-500 to-blue-500',
+      delay: '0.4s',
     },
     {
       icon: Award,
-      title: "Best Prices",
-      description: "Competitive pricing always",
-      color: "from-pink-500 to-rose-500",
-      delay: "0.5s",
+      title: 'Best Prices',
+      description: 'Competitive pricing always',
+      color: 'from-pink-500 to-rose-500',
+      delay: '0.5s',
     },
   ];
 
@@ -59,7 +59,7 @@ export function FeaturesSection() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
+          {features.map((feature) => (
             <div
               key={feature.title}
               className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 animate-fadeInUp overflow-hidden"

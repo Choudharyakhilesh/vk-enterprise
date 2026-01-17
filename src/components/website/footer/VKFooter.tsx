@@ -114,10 +114,10 @@
 //   );
 // }
 
-"use client";
+'use client';
 
-import Link from "next/link";
-import Image from "next/image";
+import Link from 'next/link';
+import Image from 'next/image';
 import {
   Facebook,
   Instagram,
@@ -127,11 +127,12 @@ import {
   Phone,
   Mail,
   MapPin,
-} from "lucide-react";
+  LucideIcon,
+} from 'lucide-react';
 
-import { useHomeStore, ISettings } from "@/store/home-store";
+import { useHomeStore, ISettings } from '@/store/home-store';
 
-const SOCIAL_ICON_MAP: Record<string, any> = {
+const SOCIAL_ICON_MAP: Record<string, LucideIcon> = {
   facebook_url: Facebook,
   instagram_url: Instagram,
   twitter_url: Twitter,
@@ -145,7 +146,7 @@ export function VKFooter() {
   /* -----------------------------
      GET SETTING BY KEY
   -------------------------------- */
-  const getSetting = (key: string, defaultValue = ""): string => {
+  const getSetting = (key: string, defaultValue = ''): string => {
     const setting = homePageData?.setting?.find((item: ISettings) => item.key === key);
     return setting?.value || defaultValue;
   };
@@ -155,7 +156,7 @@ export function VKFooter() {
   -------------------------------- */
   const socialLinks =
     homePageData?.setting?.filter(
-      (item: ISettings) => SOCIAL_ICON_MAP[item.key] && item.value && item.value.trim() !== "",
+      (item: ISettings) => SOCIAL_ICON_MAP[item.key] && item.value && item.value.trim() !== ''
     ) || [];
 
   return (
@@ -180,8 +181,8 @@ export function VKFooter() {
               />
 
               <p className="text-stone-500 text-sm leading-relaxed font-light">
-                Jaipur's premier export house. We specialize in blending traditional aesthetics
-                with modern global fashion trends.
+                {`Jaipur's premier export house. We specialize in blending traditional aesthetics
+                with modern global fashion trends.`}
               </p>
 
               {/* SOCIAL ICONS (NOW WORKING) */}
@@ -215,11 +216,11 @@ export function VKFooter() {
 
               <ul className="space-y-4">
                 {[
-                  { label: "Home", href: "/" },
-                  { label: "All Products", href: "/all-products" },
-                  { label: "Blogs", href: "/blogs" },
-                  { label: "About Us", href: "/about-us" },
-                  { label: "Contact Us", href: "/contact-us" },
+                  { label: 'Home', href: '/' },
+                  { label: 'All Products', href: '/all-products' },
+                  { label: 'Blogs', href: '/blogs' },
+                  { label: 'About Us', href: '/about-us' },
+                  { label: 'Contact Us', href: '/contact-us' },
                 ].map((link) => (
                   <li key={link.label}>
                     <Link
@@ -247,21 +248,21 @@ export function VKFooter() {
                 <div className="flex items-start space-x-4">
                   <Phone size={14} className="mt-1 text-[#C29043]" />
                   <span className="text-sm text-stone-600 font-medium">
-                    {getSetting("contact_number", "+91 7427873957")}
+                    {getSetting('contact_number', '+91 7427873957')}
                   </span>
                 </div>
 
                 <div className="flex items-start space-x-4">
                   <Mail size={14} className="mt-1 text-[#C29043]" />
                   <span className="text-sm text-stone-600 font-medium break-all">
-                    {getSetting("office_mail_address", "info@vastraexports.com")}
+                    {getSetting('office_mail_address', 'info@vastraexports.com')}
                   </span>
                 </div>
 
                 <div className="flex items-start space-x-4">
                   <MapPin size={14} className="mt-1 text-[#C29043]" />
                   <span className="text-sm text-stone-600 leading-relaxed font-medium line-clamp-2">
-                    {getSetting("office_address", "Jaipur, Rajasthan")}
+                    {getSetting('office_address', 'Jaipur, Rajasthan')}
                   </span>
                 </div>
               </div>

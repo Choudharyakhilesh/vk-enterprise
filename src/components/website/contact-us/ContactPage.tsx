@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import { TextField } from "@/components/ui/form/input";
-import PhoneInputBase from "@/components/ui/form/phoneInput";
-import { TextAreaField } from "@/components/ui/form/textarea";
-import LoadingButton from "@/components/ui/loading-button";
-import { ContactFormSchema } from "@/schema/contact-form";
-import { useHomeStore } from "@/store/home-store";
-import { useInquiryManagementStore } from "@/store/inquiry-store";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Clock, Mail, MapPin, MessageSquare, Phone, User } from "lucide-react";
-import { enqueueSnackbar } from "notistack";
-import { SubmitHandler, useForm } from "react-hook-form";
-import z from "zod";
+import { TextField } from '@/components/ui/form/input';
+import PhoneInputBase from '@/components/ui/form/phoneInput';
+import { TextAreaField } from '@/components/ui/form/textarea';
+import LoadingButton from '@/components/ui/loading-button';
+import { ContactFormSchema } from '@/schema/contact-form';
+import { useHomeStore } from '@/store/home-store';
+import { useInquiryManagementStore } from '@/store/inquiry-store';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Clock, Mail, MapPin, MessageSquare, Phone, User } from 'lucide-react';
+import { enqueueSnackbar } from 'notistack';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import z from 'zod';
 
-type SettingKey = "contact_number" | "opening_hours" | "office_address" | "office_mail_address";
+type SettingKey = 'contact_number' | 'opening_hours' | 'office_address' | 'office_mail_address';
 
 type SettingMap = Partial<Record<SettingKey, string>>;
 
@@ -37,16 +37,16 @@ const ContactPage = () => {
   } = useForm<ContactFormData>({
     resolver: zodResolver(ContactFormSchema),
     defaultValues: {
-      first_name: "",
-      last_name: "",
-      email: "",
-      mobile: "",
-      message: "",
+      first_name: '',
+      last_name: '',
+      email: '',
+      mobile: '',
+      message: '',
     },
   });
 
   const onSubmit: SubmitHandler<ContactFormData> = async (data) => {
-    const [countryCode, phoneNumber] = data?.mobile.split("-");
+    const [countryCode, phoneNumber] = data?.mobile.split('-');
 
     const formdata = {
       ...data,
@@ -54,12 +54,12 @@ const ContactPage = () => {
       country_code: countryCode,
     };
     const res = await apiCreateInquiry(formdata);
-    console.log("resres", res);
+    console.log('resres', res);
 
-    if (res?.status === "SUCCESS") {
-      enqueueSnackbar(res?.message, { variant: "success" });
+    if (res?.status === 'SUCCESS') {
+      enqueueSnackbar(res?.message, { variant: 'success' });
       reset();
-      setValue("mobile", "");
+      setValue('mobile', '');
     }
   };
 
@@ -68,22 +68,22 @@ const ContactPage = () => {
   const contactInfo = [
     {
       icon: Mail,
-      title: "Email Us",
+      title: 'Email Us',
       details: settingData?.office_mail_address,
     },
     {
       icon: Phone,
-      title: "Call Us",
+      title: 'Call Us',
       details: `+91 ${settingData?.contact_number}`,
     },
     {
       icon: MapPin,
-      title: "Visit Our Office",
+      title: 'Visit Our Office',
       details: settingData?.office_address,
     },
     {
       icon: Clock,
-      title: "Opening Hours",
+      title: 'Opening Hours',
       details: settingData?.opening_hours,
     },
   ];
@@ -98,7 +98,7 @@ const ContactPage = () => {
             Contact Us
           </h1>
           <p className="text-lg md:text-xl text-gray-800 max-w-2xl mx-auto leading-relaxed">
-            We're here to assist you. Reach out and our team will get back to you promptly.
+            {` We're here to assist you. Reach out and our team will get back to you promptly.`}
           </p>
         </div>
       </section>
@@ -106,7 +106,7 @@ const ContactPage = () => {
       <div className="container mx-auto px-4">
         {/* INFO CARDS */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {contactInfo.map((info, index) => (
+          {contactInfo.map((info) => (
             <div
               key={info.title}
               className="bg-neutral-900 border border-neutral-300 rounded-2xl p-6 shadow-sm hover:shadow-xl  transition-all"
@@ -146,7 +146,7 @@ const ContactPage = () => {
                         placeholder=""
                         textColor="text-black"
                         labelBgColor="bg-white"
-                        label={"First Name"}
+                        label={'First Name'}
                         startIcon={<User className="w-4 h-4 text-gray-800" />}
                       />
                     </div>
@@ -157,7 +157,7 @@ const ContactPage = () => {
                         placeholder=""
                         textColor="text-black"
                         labelBgColor="bg-white"
-                        label={"Last Name"}
+                        label={'Last Name'}
                         startIcon={<User className="w-4 h-4 text-gray-800" />}
                       />
                     </div>
@@ -171,7 +171,7 @@ const ContactPage = () => {
                       type="email"
                       textColor="text-black"
                       labelBgColor="bg-white"
-                      label={"Email"}
+                      label={'Email'}
                       startIcon={<Mail className="w-4 h-4 text-gray-800" />}
                     />
                   </div>
