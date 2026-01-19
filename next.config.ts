@@ -1,12 +1,14 @@
-import type { NextConfig } from 'next';
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  output: 'standalone',
-  reactStrictMode: false,
+  swcMinify: true,
   images: {
-    domains: [
-      'backend.vastraexports.com',
+    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "backend.vastraexports.com",
+      },
     ],
   },
 };
