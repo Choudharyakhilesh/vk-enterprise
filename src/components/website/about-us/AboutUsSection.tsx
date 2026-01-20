@@ -108,11 +108,11 @@
 //   );
 // }
 
-"use client";
-import React, { useEffect, useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Users, Package, Globe, Factory } from "lucide-react";
-import { motion, useInView, animate } from "framer-motion";
+'use client';
+import React, { useEffect, useRef, useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { ArrowRight, Users, Package, Globe, Factory } from 'lucide-react';
+import { motion, useInView, animate } from 'framer-motion';
 
 // --- Number Counter Sub-Component ---
 function Counter({ value }: { value: string }) {
@@ -121,14 +121,14 @@ function Counter({ value }: { value: string }) {
   const isInView = useInView(ref, { once: true, amount: 0.5 });
 
   // Value se number aur suffix (k+, M+ etc) alag karna
-  const numericValue = parseInt(value.replace(/[^0-9]/g, "")) || 0;
-  const suffix = value.replace(/[0-9]/g, "");
+  const numericValue = parseInt(value.replace(/[^0-9]/g, '')) || 0;
+  const suffix = value.replace(/[0-9]/g, '');
 
   useEffect(() => {
     if (isInView) {
       const controls = animate(0, numericValue, {
         duration: 2, // 2 seconds tak animation chalegi
-        ease: "easeOut",
+        ease: 'easeOut',
         onUpdate: (latest) => {
           setDisplayValue(Math.floor(latest));
         },
@@ -147,10 +147,10 @@ function Counter({ value }: { value: string }) {
 
 export function AboutUsSection() {
   const stats = [
-    { icon: <Factory />, value: "45k+", label: "Factory Area" },
-    { icon: <Users />, value: "11k+", label: "Team Members" },
-    { icon: <Globe />, value: "25k+", label: "Global Importers" },
-    { icon: <Package />, value: "6M+", label: "Items Yearly" },
+    { icon: <Factory />, value: '45k+', label: 'Factory Area' },
+    { icon: <Users />, value: '11k+', label: 'Team Members' },
+    { icon: <Globe />, value: '25k+', label: 'Global Importers' },
+    { icon: <Package />, value: '6M+', label: 'Items Yearly' },
   ];
 
   return (
@@ -162,17 +162,18 @@ export function AboutUsSection() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
+            transition={{ duration: 0.9, ease: 'easeOut' }}
           >
             <span className="text-sm font-medium tracking-widest text-primary uppercase mb-4 block">
-              Who We Are & What We Do?
+              {/* Who We Are & What We Do? */}
+              Who We Are & What Vastra Does?
             </span>
             <h2 className="text-4xl lg:text-6xl text-slate-900 mb-8 leading-tight">
               We Build Brands By <span className="text-primary">Exporting Fashion</span>
             </h2>
             <p className="text-slate-600 text-lg leading-relaxed mb-10 border-l-2 border-amber-200 pl-6">
-              Vastra is committed to supporting clothing brands worldwide with premium OEM and
-              ODM services. From Jaipur to the world, we handle everything from design to global
+              Vastra is committed to supporting clothing brands worldwide with premium OEM and ODM
+              services. From Jaipur to the world, we handle everything from design to global
               shipping.
             </p>
             <Button size="lg" className="flex items-center px-6 py-3 transition-all">
@@ -190,7 +191,7 @@ export function AboutUsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`p-8 rounded-[2rem] ${"bg-white shadow-xl shadow-slate-200/50"} border border-slate-100 flex flex-col items-center justify-center text-center`}
+                className={`p-8 rounded-[2rem] ${'bg-white shadow-xl shadow-slate-200/50'} border border-slate-100 flex flex-col items-center justify-center text-center`}
               >
                 <div className="p-3 bg-secondary rounded-full text-primary mb-4">
                   {React.cloneElement(stat.icon, { size: 28 })}
