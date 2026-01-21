@@ -79,22 +79,27 @@ export default function EnhancedHeroCarousel() {
                     </motion.p>
 
                     {/* CTA */}
-                    {/* <motion.div
+                    {/* CTA Section - Isse update karein */}
+                    <motion.div
                       initial={{ y: 20, opacity: 0 }}
                       animate={isActive ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
                       transition={{ duration: 0.5, delay: 0.9 }}
                     >
                       <div className="flex flex-col sm:flex-row gap-3">
+                        {/* ✅ tel: link use karke dialer open karein */}
                         <Button
+                          asChild // Taaki Button link ki tarah behave kare
                           size="lg"
                           className="flex items-center px-6 py-3 text-white shadow-lg transition-all"
                         >
-                          <ShoppingBag className="w-5 h-5 mr-2" />
-                          Explore Collections
+                          <a href="tel:+917427873957">
+                            <ShoppingBag className="w-5 h-5 mr-2" />
+                            Enquire Now
+                          </a>
                         </Button>
                       </div>
-                    </motion.div> */}
-                    <motion.a
+                    </motion.div>
+                    {/* <motion.a
                       href="whatsapp://send?phone=917427873957"
                       initial={{ y: 20, opacity: 0 }}
                       animate={isActive ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
@@ -104,7 +109,7 @@ export default function EnhancedHeroCarousel() {
                         <ShoppingBag className="mr-2 w-4 h-4" />
                         Enquire Now
                       </Button>
-                    </motion.a>
+                    </motion.a> */}
                   </div>
                 </div>
               )}
