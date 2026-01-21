@@ -261,7 +261,7 @@ const StickyDrawer = () => {
       <button
         onClick={openDrawer}
         className="md:hidden fixed left-4 bottom-4 z-50
-        w-14 h-14 rounded-full bg-primary shadow-xl
+        w-12 h-12 rounded-full bg-primary shadow-xl
         flex items-center justify-center"
       >
         <MessageSquare className="text-white w-6 h-6" />
