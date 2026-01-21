@@ -1,6 +1,6 @@
-"use client";
-import React from "react";
-import { motion } from "framer-motion";
+'use client';
+import React from 'react';
+import { motion } from 'framer-motion';
 import {
   Tag,
   CheckCircle2,
@@ -11,40 +11,41 @@ import {
   Scissors,
   MoveRight,
   Sparkles,
-} from "lucide-react";
-import Image from "next/image";
+} from 'lucide-react';
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
 
 export default function AllServicesSection() {
   // PDF Data: Label Types [cite: 26, 29, 32, 35, 38, 41]
   const labelTypes = [
     {
-      title: "Brand Labels",
-      desc: "Brand labels are the core essence of your brand personality. Therefore, Vastra makes sure that every brand label reflects the class, quality, and values that a brand tends to convey to its target audience.",
+      title: 'Brand Labels',
+      desc: 'Brand labels are the core essence of your brand personality. Therefore, Vastra makes sure that every brand label reflects the class, quality, and values that a brand tends to convey to its target audience.',
       icon: <Tag className="w-5 h-5" />,
     },
     {
-      title: "Size Labels",
-      desc: "Sizing is essential for every brand. And the size chart may vary region to region and brand to brand. Whether numeric or alpha sizing, Vastra provides 100% custom-sized labels for clothing businesses. ",
+      title: 'Size Labels',
+      desc: 'Sizing is essential for every brand. And the size chart may vary region to region and brand to brand. Whether numeric or alpha sizing, Vastra provides 100% custom-sized labels for clothing businesses. ',
       icon: <Layers className="w-5 h-5" />,
     },
     {
-      title: "Care Labels",
-      desc: "Care instructions ensure the longevity and durability of every piece of apparel. Vastra creates care labels as per your specifications and chosen fabric material in your desired language.",
+      title: 'Care Labels',
+      desc: 'Care instructions ensure the longevity and durability of every piece of apparel. Vastra creates care labels as per your specifications and chosen fabric material in your desired language.',
       icon: <Scissors className="w-5 h-5" />,
     },
     {
-      title: "Hang Tags",
-      desc: "The hang tags can enhance the aesthetics of a brand. Therefore, Vastra makes sure that every brand gets a beautiful hang tag that communicates the brand story with additional information. ",
+      title: 'Hang Tags',
+      desc: 'The hang tags can enhance the aesthetics of a brand. Therefore, Vastra makes sure that every brand gets a beautiful hang tag that communicates the brand story with additional information. ',
       icon: <MoveRight className="w-5 h-5" />,
     },
     {
-      title: "Embroidered & Heat-Pressed Labeling",
-      desc: "We understand that a premium brand looks for durability and elite finishing. Therefore, we also provide embroidered logos and heat-pressed labeling for leading brands. ",
+      title: 'Embroidered & Heat-Pressed Labeling',
+      desc: 'We understand that a premium brand looks for durability and elite finishing. Therefore, we also provide embroidered logos and heat-pressed labeling for leading brands. ',
       icon: <Sparkles className="w-5 h-5" />,
     },
     {
-      title: "Packaging Labels & Accessories",
-      desc: "The packaging of a brand may also require varying types of labeling, such as barcode stickers, box labels, carton labels, SKU labels, and more. Vastra manufactures such labels with eco-friendly adhesive. ",
+      title: 'Packaging Labels & Accessories',
+      desc: 'The packaging of a brand may also require varying types of labeling, such as barcode stickers, box labels, carton labels, SKU labels, and more. Vastra manufactures such labels with eco-friendly adhesive. ',
       icon: <Leaf className="w-5 h-5" />,
     },
   ];
@@ -52,24 +53,24 @@ export default function AllServicesSection() {
   // PDF Data: Materials [cite: 48, 51, 55, 59, 63, 68]
   const materials = [
     {
-      name: "Woven Labels",
-      features: ["Durable", "Comfortable", "Premium Finish"],
+      name: 'Woven Labels',
+      features: ['Durable', 'Comfortable', 'Premium Finish'],
     },
     {
-      name: "Printed Labels",
-      features: ["Cost-Effective", "Aesthetic", "Lightweight"],
+      name: 'Printed Labels',
+      features: ['Cost-Effective', 'Aesthetic', 'Lightweight'],
     },
     {
-      name: "Satin Labels",
-      features: ["Comfort", "Luxury", "Elite Finish"],
+      name: 'Satin Labels',
+      features: ['Comfort', 'Luxury', 'Elite Finish'],
     },
     {
-      name: "Damask Labels",
-      features: ["Detailing", "High Definition", "Woven Design"],
+      name: 'Damask Labels',
+      features: ['Detailing', 'High Definition', 'Woven Design'],
     },
     {
-      name: "Heat Transfer Labels",
-      features: ["Tag-Free", "Maximum Comfort", "Light on Skin"],
+      name: 'Heat Transfer Labels',
+      features: ['Tag-Free', 'Maximum Comfort', 'Light on Skin'],
     },
   ];
 
@@ -110,11 +111,19 @@ export default function AllServicesSection() {
                 Helping global clothing brands establish hassle-free operations with leading
                 manufacturing in India.
               </motion.p>
-              <motion.button
-                variants={itemVariants}
-                className="text-sm bg-slate-900 text-white px-3 py-2 rounded-full flex items-center gap-3 hover:bg-primary transition-all shadow-lg"
-              >
-                Enquire for Private Labeling <MoveRight className="w-4 h-4" />
+              <motion.button variants={itemVariants}>
+                <Button
+                  variant="default"
+                  onClick={() => {
+                    const msg = encodeURIComponent(
+                      'Hello Vastra Team, I would like to explore your collections.'
+                    );
+                    window.open(`https://wa.me/917427873957?text=${msg}`, '_blank');
+                  }}
+                  className=""
+                >
+                  Enquire for Private Labeling <MoveRight className="w-4 h-4" />
+                </Button>
               </motion.button>
             </motion.div>
 
@@ -123,12 +132,7 @@ export default function AllServicesSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               className="relative h-[450px] rounded-3xl overflow-hidden shadow-2xl"
             >
-              <Image
-                src="/GettyImages.jpg"
-                alt="Vastra Labeling"
-                fill
-                className="object-cover"
-              />
+              <Image src="/GettyImages.jpg" alt="Vastra Labeling" fill className="object-cover" />
               <div className="absolute inset-0 bg-black/10 hover:bg-black/0 transition-colors duration-500" />
             </motion.div>
           </div>
@@ -161,14 +165,13 @@ export default function AllServicesSection() {
               </p>
 
               <p className="text-slate-600 leading-relaxed mb-6">
-                Vastra makes sure that you get a special identity that resonates strongly with
-                your target audience through its carefully crafted private labeling services.
+                Vastra makes sure that you get a special identity that resonates strongly with your
+                target audience through its carefully crafted private labeling services.
               </p>
 
               <p className="text-slate-600 leading-relaxed">
-                From extra-special brand labels to tailored care labels, Vastra provides
-                everything under one roof—ensuring your brand evolves into a strong and premium
-                personality.
+                From extra-special brand labels to tailored care labels, Vastra provides everything
+                under one roof—ensuring your brand evolves into a strong and premium personality.
               </p>
             </motion.div>
 
@@ -230,9 +233,9 @@ export default function AllServicesSection() {
             </h2>
             <p className="text-slate-500 text-sm max-w-4xl mx-auto leading-relaxed">
               We’re responsible apparel manufacturers. We believe that brand labeling must be a
-              feeling, an emotion, and most importantly a comfort zone for both the brand and
-              the wearer. Hence, every private label designed and manufactured with us
-              necessarily carries these essential USPs.
+              feeling, an emotion, and most importantly a comfort zone for both the brand and the
+              wearer. Hence, every private label designed and manufactured with us necessarily
+              carries these essential USPs.
             </p>
           </div>
 
@@ -250,8 +253,8 @@ export default function AllServicesSection() {
               </div>
               <h4 className="font-semibold mb-3">Comfortable to Wear</h4>
               <p className="text-sm text-slate-600 leading-relaxed">
-                We design every label with utmost care and duly test it against the skin to
-                ensure it never feels itchy or uncomfortable for the wearer.
+                We design every label with utmost care and duly test it against the skin to ensure
+                it never feels itchy or uncomfortable for the wearer.
               </p>
             </motion.div>
 
@@ -267,8 +270,8 @@ export default function AllServicesSection() {
               </div>
               <h4 className="font-semibold mb-3">Premium Finish</h4>
               <p className="text-sm text-slate-600 leading-relaxed">
-                Our labeling team ensures accurate cuts, trims, and attachments that reflect
-                your brand’s emotion, story, and premium quality.
+                Our labeling team ensures accurate cuts, trims, and attachments that reflect your
+                brand’s emotion, story, and premium quality.
               </p>
             </motion.div>
 
@@ -284,8 +287,8 @@ export default function AllServicesSection() {
               </div>
               <h4 className="font-semibold mb-3">Aesthetic Design</h4>
               <p className="text-sm text-slate-600 leading-relaxed">
-                We let your private label speak your brand story through a unique, aesthetic
-                design that builds recall and brand loyalty.
+                We let your private label speak your brand story through a unique, aesthetic design
+                that builds recall and brand loyalty.
               </p>
             </motion.div>
 
@@ -312,9 +315,7 @@ export default function AllServicesSection() {
       {/* --- Services Grid --- [cite: 26, 48] */}
       <section className="py-5 bg-slate-50/50">
         <div className="max-w-7xl mx-auto px-6 text-center mb-16">
-          <h2 className="text-3xl md:text-3xl font-light mb-4">
-            What Kind of Labels Can We Make?
-          </h2>
+          <h2 className="text-3xl md:text-3xl font-light mb-4">What Kind of Labels Can We Make?</h2>
           <p className="text-slate-500 text-md">
             From brand identity to tailored care instructions, we provide it all.
           </p>
@@ -361,8 +362,8 @@ export default function AllServicesSection() {
                     <h4 className="font-bold mb-1">3 Decades of Legacy</h4>
                     <p className="text-slate-400 text-sm leading-relaxed">
                       Vastra is a well-established women’s clothing manufacturing house in India
-                      with over three decades of experience, bringing deep industry knowledge
-                      and trust to every brand we work with.
+                      with over three decades of experience, bringing deep industry knowledge and
+                      trust to every brand we work with.
                     </p>
                   </div>
                 </div>
@@ -375,9 +376,8 @@ export default function AllServicesSection() {
                   <div>
                     <h4 className="font-bold mb-1">Globally Trusted</h4>
                     <p className="text-slate-400 text-sm leading-relaxed">
-                      Trusted worldwide as affordable yet aesthetic garment manufacturers,
-                      Vastra serves small to large clothing brands across multiple international
-                      markets.
+                      Trusted worldwide as affordable yet aesthetic garment manufacturers, Vastra
+                      serves small to large clothing brands across multiple international markets.
                     </p>
                   </div>
                 </div>
@@ -404,9 +404,8 @@ export default function AllServicesSection() {
                   <div>
                     <h4 className="font-bold mb-1">Design to Ship Services</h4>
                     <p className="text-slate-400 text-sm leading-relaxed">
-                      Vastra offers complete services from apparel design to final shipment. As
-                      a global manufacturer and exporter, we seamlessly serve brands across the
-                      world.
+                      Vastra offers complete services from apparel design to final shipment. As a
+                      global manufacturer and exporter, we seamlessly serve brands across the world.
                     </p>
                   </div>
                 </div>
@@ -418,9 +417,7 @@ export default function AllServicesSection() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {materials.map((m, i) => (
                   <div key={i} className="bg-white/10 p-4 rounded-xl">
-                    <span className="text-primary block font-semibold text-xs mb-2">
-                      {m.name}
-                    </span>
+                    <span className="text-primary block font-semibold text-xs mb-2">{m.name}</span>
                     <ul className="text-[10px] space-y-1 text-slate-300">
                       {m.features.map((f, j) => (
                         <li key={j}>• {f}</li>
@@ -443,8 +440,8 @@ export default function AllServicesSection() {
               FAQs – Do You Have Any of These Queries?
             </h2>
             <p className="text-slate-500 max-w-3xl mx-auto leading-relaxed">
-              We’ve answered some of the most common questions brands ask us before starting
-              their private labeling journey with Vastra.
+              We’ve answered some of the most common questions brands ask us before starting their
+              private labeling journey with Vastra.
             </p>
           </div>
 
@@ -457,9 +454,8 @@ export default function AllServicesSection() {
               </h4>
               <p className="text-slate-600 text-sm leading-relaxed">
                 Yes. Vastra is one of the highly experienced women’s clothing manufacturers in
-                India. If you do not have any prior ideation, our design team can create a
-                private label from scratch that perfectly suits your brand image and target
-                audience.
+                India. If you do not have any prior ideation, our design team can create a private
+                label from scratch that perfectly suits your brand image and target audience.
               </p>
             </div>
 
@@ -467,9 +463,9 @@ export default function AllServicesSection() {
             <div className="border border-slate-200 rounded-2xl p-6">
               <h4 className="font-semibold mb-2">Can We Get Fully Customised Labeling?</h4>
               <p className="text-slate-600 text-sm leading-relaxed">
-                Absolutely. Vastra specialises in providing fully customised labeling solutions.
-                If you already have a concept or design in mind, our team will deliver a 100%
-                replica that matches your brand’s vision and expectations.
+                Absolutely. Vastra specialises in providing fully customised labeling solutions. If
+                you already have a concept or design in mind, our team will deliver a 100% replica
+                that matches your brand’s vision and expectations.
               </p>
             </div>
 
@@ -490,9 +486,9 @@ export default function AllServicesSection() {
               <h4 className="font-semibold mb-2">Can We Use Our Own Label Suppliers?</h4>
               <p className="text-slate-600 text-sm leading-relaxed">
                 Yes. If your brand already works with another label supplier but wants design or
-                manufacturing services from Vastra, we fully support that. Our clients are free
-                to choose which services they want from us and which from others — convenience
-                always comes first.
+                manufacturing services from Vastra, we fully support that. Our clients are free to
+                choose which services they want from us and which from others — convenience always
+                comes first.
               </p>
             </div>
           </div>

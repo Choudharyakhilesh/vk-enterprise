@@ -1,10 +1,9 @@
-
-
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Users, Package, Globe, Factory } from 'lucide-react';
 import { motion, useInView, animate } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 // --- Number Counter Sub-Component ---
 function Counter({ value }: { value: string }) {
@@ -38,6 +37,7 @@ function Counter({ value }: { value: string }) {
 }
 
 export function AboutUsSection() {
+  const router = useRouter();
   const stats = [
     { icon: <Factory />, value: '45k+', label: 'Factory Area' },
     { icon: <Users />, value: '11k+', label: 'Team Members' },
@@ -68,7 +68,11 @@ export function AboutUsSection() {
               services. From Jaipur to the world, we handle everything from design to global
               shipping.
             </p>
-            <Button size="lg" className="flex items-center px-6 py-3 transition-all">
+            <Button
+              onClick={() => router.push('/about-us')}
+              size="lg"
+              className="flex items-center px-6 py-3 transition-all"
+            >
               Learn More About Us
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>

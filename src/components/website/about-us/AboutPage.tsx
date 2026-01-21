@@ -1,22 +1,23 @@
 'use client';
 
-import React from 'react';
+import { Button } from '@/components/ui/button';
+import { useStickyDrawerStore } from '@/store/useStickyDrawerStore';
 import { motion } from 'framer-motion';
 import {
-  Globe,
-  Settings,
-  Leaf,
-  Layers,
   Box,
-  Zap,
-  Sparkles,
-  Heart,
-  Target,
   Eye,
-  ArrowUpRight,
+  Globe,
+  Heart,
+  Layers,
+  Leaf,
+  Settings,
+  Sparkles,
+  Target,
+  Zap,
 } from 'lucide-react';
 
 export function AboutSection() {
+  const { openDrawer } = useStickyDrawerStore();
   // Primary Color: #cc9547
   // Secondary Color: #e8d8bd
 
@@ -83,14 +84,6 @@ export function AboutSection() {
       {/* 1. HERO SECTION */}
       <section className=" flex items-center justify-center text-center px-6 py-6">
         <div className="">
-          {/* <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="uppercase tracking-[0.4em] text-xs mb-4 font-bold"
-            style={{ color: "#cc9547" }}
-          >
-            Established 1997
-          </motion.p> */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -106,7 +99,7 @@ export function AboutSection() {
 
       {/* 2. COMPANY OVERVIEW */}
       <section className="py-5 px-6 max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-5">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -114,9 +107,9 @@ export function AboutSection() {
             className="rounded-2xl overflow-hidden shadow-2xl"
           >
             <img
-              src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800"
+              src="https://images.unsplash.com/photo-1675176785803-bffbbb0cd2f4?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGV4dGlsZSUyMG1hY2hpbmV8ZW58MHx8MHx8fDA%3D"
               alt="Vastra Manufacturing"
-              className="w-full object-cover aspect-[4/5]"
+              className="w-full h-[300px] object-cover aspect-[4/5]"
             />
           </motion.div>
           <div className="space-y-8">
@@ -140,14 +133,14 @@ export function AboutSection() {
       </section>
 
       {/* 3. DIFFERENTIATORS */}
-      <section className="py-20 px-6 max-w-7xl mx-auto border-t border-stone-100">
-        <div className="text-center mb-16">
+      <section className="py-5 px-6 max-w-7xl mx-auto border-t border-stone-100">
+        <div className="text-center mb-8">
           <h2 className="text-4xl md:text-5xl font-serif mb-4" style={{ color: '#cc9547' }}>
             We’re Different Because We’re:
           </h2>
           <div className="h-1 w-24 mx-auto" style={{ backgroundColor: '#e8d8bd' }}></div>
         </div>
-        <div className="grid md:grid-cols-2 gap-x-12 gap-y-16">
+        <div className="grid md:grid-cols-2 gap-x-5 gap-y-5">
           {differentiators.map((item, idx) => (
             <div key={idx} className="flex gap-6">
               <div className="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center bg-[#fcf9f5] border border-[#e8d8bd]">
@@ -163,9 +156,9 @@ export function AboutSection() {
       </section>
 
       {/* 4. MISSION & VISION */}
-      <section className="py-24 px-6 bg-[#fcf9f5]">
+      <section className="py-5 px-6 bg-[#fcf9f5]">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
-          <div className="p-10 md:p-14 rounded-[2.5rem] bg-white border border-[#e8d8bd] text-center shadow-sm">
+          <div className="p-5 md:p-10 rounded-[2.5rem] bg-white border border-[#e8d8bd] text-center shadow-sm">
             <Target size={40} className="mx-auto mb-6" style={{ color: '#cc9547' }} />
             <h2 className="text-4xl font-serif mb-6" style={{ color: '#cc9547' }}>
               The Mission
@@ -176,7 +169,7 @@ export function AboutSection() {
               their customers."`}
             </p>
           </div>
-          <div className="p-10 md:p-14 rounded-[2.5rem] bg-white border border-[#e8d8bd] text-center shadow-sm">
+          <div className="p-5 md:p-10 rounded-[2.5rem] bg-white border border-[#e8d8bd] text-center shadow-sm">
             <Eye size={40} className="mx-auto mb-6" style={{ color: '#cc9547' }} />
             <h2 className="text-4xl font-serif mb-6" style={{ color: '#cc9547' }}>
               The Vision
@@ -191,8 +184,8 @@ export function AboutSection() {
       </section>
 
       {/* --- UPDATED: CORE BUSINESS AREAS --- */}
-      <section className="py-24 px-6 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+      <section className="py-5 px-6 max-w-7xl mx-auto">
+        <div className="text-center mb-8">
           <h2 className="text-4xl md:text-5xl font-serif mb-4" style={{ color: '#cc9547' }}>
             Our Core Business Areas
           </h2>
@@ -204,7 +197,7 @@ export function AboutSection() {
             <motion.div
               key={i}
               whileHover={{ y: -5 }}
-              className="p-10 bg-white border border-stone-100 rounded-[2rem] shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
+              className="p-8 bg-white border border-stone-100 rounded-[2rem] shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
               style={{ borderLeft: `4px solid #cc9547` }}
             >
               <div>
@@ -220,20 +213,20 @@ export function AboutSection() {
                 </p>
               </div>
 
-              <a
+              {/* <a
                 href="#"
                 className="flex items-center gap-2 text-sm font-bold tracking-widest uppercase hover:gap-4 transition-all"
                 style={{ color: '#cc9547' }}
               >
                 {service.link} <ArrowUpRight size={18} />
-              </a>
+              </a> */}
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* 5. STATISTICS */}
-      <section className="py-20 px-6 border-t border-stone-100">
+      <section className="py-5 px-6 border-t border-stone-100">
         <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
           {stats.map((stat, i) => (
             <div key={i}>
@@ -253,9 +246,9 @@ export function AboutSection() {
       </section>
 
       {/* 6. VALUES & SUPPORT */}
-      <section className="py-20 px-6 max-w-7xl mx-auto">
+      <section className="py-5 px-0 max-w-7xl mx-auto">
         <div
-          className="rounded-[3rem] p-12 md:p-20 relative overflow-hidden shadow-sm"
+          className="rounded-[3rem] p-5 md:p-8 relative overflow-hidden shadow-sm"
           style={{ backgroundColor: '#e8d8bd' }} // Secondary Background
         >
           {/* Decorative background text - Subtle and elegant */}
@@ -321,10 +314,9 @@ export function AboutSection() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full md:w-auto px-10 py-4 rounded-full text-xs font-bold tracking-[0.2em] shadow-lg transition-all"
-                  style={{ backgroundColor: '#cc9547', color: 'white' }}
+                  onClick={openDrawer}
                 >
-                  GET IN TOUCH
+                  <Button>GET IN TOUCH</Button>
                 </motion.button>
               </div>
             </div>

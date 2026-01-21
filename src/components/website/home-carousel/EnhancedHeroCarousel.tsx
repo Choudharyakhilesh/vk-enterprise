@@ -10,14 +10,13 @@ import 'swiper/css/effect-fade';
 
 import { ShoppingBag, Sparkles } from 'lucide-react';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
 import { IHomePage, useHomeStore } from '@/store/home-store';
-import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
 
 type Banner = IHomePage['banners'][number];
 
 export default function EnhancedHeroCarousel() {
-  const router = useRouter();
+  // const router = useRouter();
   const { homePageData } = useHomeStore();
 
   const banners = homePageData?.banners || [];
@@ -80,7 +79,7 @@ export default function EnhancedHeroCarousel() {
                     </motion.p>
 
                     {/* CTA */}
-                    <motion.div
+                    {/* <motion.div
                       initial={{ y: 20, opacity: 0 }}
                       animate={isActive ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
                       transition={{ duration: 0.5, delay: 0.9 }}
@@ -89,13 +88,23 @@ export default function EnhancedHeroCarousel() {
                         <Button
                           size="lg"
                           className="flex items-center px-6 py-3 text-white shadow-lg transition-all"
-                          onClick={() => router.push('/all-products')}
                         >
                           <ShoppingBag className="w-5 h-5 mr-2" />
                           Explore Collections
                         </Button>
                       </div>
-                    </motion.div>
+                    </motion.div> */}
+                    <motion.a
+                      href="whatsapp://send?phone=917427873957"
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={isActive ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+                      transition={{ duration: 0.5, delay: 0.9 }}
+                    >
+                      <Button size="sm" className="flex items-center">
+                        <ShoppingBag className="mr-2 w-4 h-4" />
+                        Enquire Now
+                      </Button>
+                    </motion.a>
                   </div>
                 </div>
               )}
