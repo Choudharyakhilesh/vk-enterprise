@@ -70,7 +70,7 @@ function PhoneInput<TFieldValues extends FieldValues>({
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const {
-    field: { onChange, ref },
+    field: { onChange, ref, value },
     fieldState: { error },
   } = useController({
     name,
@@ -88,6 +88,26 @@ function PhoneInput<TFieldValues extends FieldValues>({
       },
     },
   });
+
+  useEffect(() => {
+    if (!value) {
+      // RHF ne clear kiya hai
+      setPhoneNumber('');
+      setSelectedCountry({
+        code: 'IN',
+        label: 'India',
+        phone: '91',
+        icon: 'in.webp',
+        regex: '^\\d{10}$',
+      });
+    } else {
+      // value format: +91-9876543210
+      const [code, num] = String(value).split('-');
+      if (code && num) {
+        setPhoneNumber(num.replace(/\D/g, ''));
+      }
+    }
+  }, [value]);
 
   const filteredCountries = useMemo(() => {
     if (!searchTerm) return countries;

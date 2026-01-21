@@ -9,8 +9,8 @@ import { useHomeStore } from '@/store/home-store';
 import { useInquiryManagementStore } from '@/store/inquiry-store';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Clock, Mail, MapPin, MessageSquare, Phone, User } from 'lucide-react';
-import { enqueueSnackbar } from 'notistack';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import z from 'zod';
 
 type SettingKey = 'contact_number' | 'opening_hours' | 'office_address' | 'office_mail_address';
@@ -56,10 +56,23 @@ const ContactPage = () => {
     const res = await apiCreateInquiry(formdata);
     console.log('resres', res);
 
-    if (res?.status === 'SUCCESS') {
-      enqueueSnackbar(res?.message, { variant: 'success' });
-      reset();
-      setValue('mobile', '');
+    if (res && res.status === 'SUCCESS') {
+      reset({
+        first_name: '',
+        last_name: '',
+        email: '',
+        mobile: '',
+        message: '',
+      });
+      setValue('mobile', '', {
+        shouldDirty: false,
+        shouldTouch: false,
+        shouldValidate: false,
+      });
+
+      toast.success(res.message || 'Inquiry submitted successfully');
+    } else {
+      toast.error(res?.message || 'Something went wrong');
     }
   };
 

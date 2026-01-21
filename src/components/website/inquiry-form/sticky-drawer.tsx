@@ -1,17 +1,19 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { TextField } from "@/components/ui/form/input";
-import PhoneInputBase from "@/components/ui/form/phoneInput";
-import { TextAreaField } from "@/components/ui/form/textarea";
-import LoadingButton from "@/components/ui/loading-button";
-import { ContactFormSchemaStickey } from "@/schema/stickey-form-schema";
-import { useInquiryManagementStore } from "@/store/inquiry-store";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Mail, MessageSquare, MoveLeft, User, X } from "lucide-react";
-import { enqueueSnackbar } from "notistack";
-import { useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import z from "zod";
+'use client';
+import { Button } from '@/components/ui/button';
+import { TextField } from '@/components/ui/form/input';
+import PhoneInputBase from '@/components/ui/form/phoneInput';
+import { TextAreaField } from '@/components/ui/form/textarea';
+import LoadingButton from '@/components/ui/loading-button';
+
+import { ContactFormSchemaStickey } from '@/schema/stickey-form-schema';
+import { useInquiryManagementStore } from '@/store/inquiry-store';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Mail, MessageSquare, MoveLeft, User, X } from 'lucide-react';
+
+import { useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import z from 'zod';
+import { toast } from 'sonner';
 
 type ContactFormData = z.infer<typeof ContactFormSchemaStickey>;
 const StickyDrawer = () => {
@@ -22,21 +24,20 @@ const StickyDrawer = () => {
     control,
     handleSubmit,
     formState: {},
-    setValue,
     reset,
   } = useForm<ContactFormData>({
     resolver: zodResolver(ContactFormSchemaStickey),
     defaultValues: {
-      first_name: "",
-      last_name: "",
-      email: "",
-      mobile: "",
-      message: "",
+      first_name: '',
+      last_name: '',
+      email: '',
+      mobile: '',
+      message: '',
     },
   });
 
   const onSubmit: SubmitHandler<ContactFormData> = async (data) => {
-    const [countryCode, phoneNumber] = data?.mobile.split("-");
+    const [countryCode, phoneNumber] = data?.mobile.split('-');
 
     const formdata = {
       ...data,
@@ -44,13 +45,15 @@ const StickyDrawer = () => {
       country_code: countryCode,
     };
     const res = await apiCreateInquirySticky(formdata);
-    if (res?.data?.success === true) {
+    if (res && res.status === 'SUCCESS') {
       reset();
-      setValue("mobile", "");
+      // setValue('mobile', '');
+
       setIsOpen(false);
-      enqueueSnackbar(String(res.data?.message || "Inquiry submitted successfully"), {
-        variant: "success",
-      });
+
+      toast.success(res.message || 'Inquiry submitted successfully');
+    } else {
+      toast.error(res?.message || 'Something went wrong');
     }
   };
 
@@ -85,7 +88,7 @@ const StickyDrawer = () => {
       {/* 3. Floating Form Card (Not full height) */}
       <div
         className={`fixed right-8 top-1/2 -translate-y-1/2 z-[70] w-[300px] md:w-[380px]  bg-white text-black rounded-2xl shadow-2xl transition-all duration-300 transform ${
-          isOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
+          isOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
         }`}
       >
         <div className="p-4 relative">
@@ -100,7 +103,7 @@ const StickyDrawer = () => {
           <h2 className="text-xl font-bold mb-3">Send Enquiry</h2>
 
           <form
-            id="contact-form"
+            id="stickey-contact-form"
             onSubmit={handleSubmit(onSubmit)}
             className="space-y-4 w-full mx-auto"
           >
@@ -113,7 +116,7 @@ const StickyDrawer = () => {
                     placeholder=""
                     textColor="text-black"
                     labelBgColor="bg-white"
-                    label={"First Name"}
+                    label={'First Name'}
                     startIcon={<User className="w-4 h-4 text-gray-800" />}
                   />
                 </div>
@@ -124,7 +127,7 @@ const StickyDrawer = () => {
                     placeholder=""
                     textColor="text-black"
                     labelBgColor="bg-white"
-                    label={"Last Name"}
+                    label={'Last Name'}
                     startIcon={<User className="w-4 h-4 text-gray-800" />}
                   />
                 </div>
@@ -138,7 +141,7 @@ const StickyDrawer = () => {
                   type="email"
                   textColor="text-black"
                   labelBgColor="bg-white"
-                  label={"Email"}
+                  label={'Email'}
                   startIcon={<Mail className="w-4 h-4 text-gray-800" />}
                 />
               </div>
@@ -172,7 +175,7 @@ const StickyDrawer = () => {
                 <LoadingButton
                   type="submit"
                   isLoading={createInquiryStickeyLoading}
-                  form="contact-form"
+                  form="stickey-contact-form"
                   className="cursor-pointer"
                 >
                   Submit

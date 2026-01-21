@@ -331,8 +331,8 @@ h6 {
 .swiper-button-next {
   color: #fff !important;
   /* top: 200px !important; */
-  width: 25px !important;
-  height: 25px !important;
+  width: 30px !important;
+  height: 30px !important;
   background: rgba(0, 0, 0, 0.45) !important;
   border-radius: 50% !important;
   backdrop-filter: blur(4px);
@@ -342,12 +342,19 @@ h6 {
   transition: 0.3s ease !important;
 }
 
-.swiper-navigation-icon {
+.swiper-button-prev:after {
+  font-size: 16px !important;
+}
+.swiper-button-next:after {
+  font-size: 16px !important;
+}
+
+/* .swiper-navigation-icon {
   font-size: 10px !important;
   font-weight: 700 !important;
   width: 20% !important;
   height: 20% !important;
-}
+} */
 
 .font-playfair {
   font-family: 'Playfair Display', serif;
