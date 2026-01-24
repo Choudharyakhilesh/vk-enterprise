@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { X, Layers, Hash } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useTopLoader } from "nextjs-toploader";
-import { useState } from "react";
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { X, Layers, Hash } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useTopLoader } from 'nextjs-toploader';
+import { useState } from 'react';
 
 // Swiper Imports
-import { Swiper as SwiperReact, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
-import type { Swiper as SwiperType } from "swiper";
-import "swiper/css";
-import "swiper/css/navigation";
-import { IProducts } from "@/store/products-store";
+import { Swiper as SwiperReact, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { IProducts } from '@/store/products-store';
 
 interface QuickViewModalProps {
   product: IProducts | null;
@@ -68,7 +68,7 @@ export function QuickViewModal({ product, open, onClose }: QuickViewModalProps) 
           </div>
 
           {/* Right Side: Details + Gallery */}
-          <div className="p-6 flex flex-col h-full max-h-[700px] overflow-y-auto custom-scrollbar bg-white">
+          <div className="p-3 bg-white">
             <div className="flex-1">
               <Badge variant="outline" className="mb-3 text-primary border-secondary">
                 {product.category_name}
@@ -85,7 +85,7 @@ export function QuickViewModal({ product, open, onClose }: QuickViewModalProps) 
                       Fabric:
                     </span>
                     <span className="text-xs font-semibold text-stone-800">
-                      {product.fabric || "Premium Cotton"}
+                      {product.fabric || 'Premium Cotton'}
                     </span>
                   </div>
                 </div>
@@ -101,15 +101,13 @@ export function QuickViewModal({ product, open, onClose }: QuickViewModalProps) 
                       Code:
                     </span>
                     <span className="text-sm font-mono font-bold text-primary">
-                      #{product.style_code || "VX-2024"}
+                      #{product.style_code || 'VX-2024'}
                     </span>
                   </div>
                 </div>
               </div>
 
-              <p className="text-stone-600 text-sm leading-relaxed mb-6">
-                {product.description}
-              </p>
+              <p className="text-stone-600 text-sm leading-relaxed mb-6">{product.description}</p>
 
               {/* Product Gallery (Thumbnails) */}
               <div className="mb-6">
@@ -128,14 +126,14 @@ export function QuickViewModal({ product, open, onClose }: QuickViewModalProps) 
                       }}
                       className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all duration-300 ${
                         activeIndex === index
-                          ? "border-stone-900 scale-95 opacity-100 shadow-md"
-                          : "border-stone-100 opacity-60 hover:opacity-100 hover:border-stone-300"
+                          ? 'border-secondary ring-2 ring-secondary-100 opacity-100'
+                          : 'border-stone-100 opacity-60 hover:opacity-100 hover:border-stone-300'
                       }`}
                     >
                       <img
                         src={img}
                         alt={`Thumbnail ${index + 1}`}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain bg-stone-100"
                       />
                     </button>
                   ))}
@@ -143,7 +141,7 @@ export function QuickViewModal({ product, open, onClose }: QuickViewModalProps) 
               </div>
             </div>
 
-            <div className="pt-4 mt-auto">
+            <div className="pt-10 mt-auto">
               <Button
                 variant="default"
                 className="w-full"

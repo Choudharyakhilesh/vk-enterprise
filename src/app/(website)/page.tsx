@@ -11,7 +11,16 @@ export const metadata: Metadata = {
   title: "Vastra - Women's Clothing Manufacturers & Exporters",
   description:
     "Vastra Cloth Manufacturers and Exporters - Designing, Manufacturing, Wholesaling & Shipping Women's Fashion From India. Building Brands Worldwide since 1997.",
-  // icons: '/vk-logo.svg',
+  icons: '/file.svg',
+  keywords: [
+    "Women's Clothing Manufacturers",
+    'Clothing Exporters India',
+    "Wholesale Women's Fashion",
+    'Vastra Exports Jaipur',
+    'Cotton Garment Manufacturers',
+    'Ethic Wear Exporters',
+    'Textile Manufacturing India',
+  ],
 };
 
 export default function Page() {

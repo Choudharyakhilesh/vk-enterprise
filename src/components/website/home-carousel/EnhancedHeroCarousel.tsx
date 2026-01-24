@@ -37,7 +37,7 @@ export default function EnhancedHeroCarousel() {
           {banners.map((banner: Banner) => (
             <SwiperSlide key={banner.id}>
               {({ isActive }) => (
-                <div className="relative w-full h-full">
+                <div className="relative w-full min-h-[800px] md:aspect-[16/9] rounded-4xl overflow-hidden bg-black">
                   <Image
                     src={banner.image || banner.banner_image}
                     alt={banner.title}
@@ -46,7 +46,7 @@ export default function EnhancedHeroCarousel() {
                     className="object-cover brightness-[0.4]"
                   />
 
-                  <div className="relative h-full flex flex-col justify-center items-center text-center px-6">
+                  <div className="absolute mb-50 inset-0 flex flex-col justify-center items-center text-center px-6 -translate-y-6">
                     {/* SUBTITLE */}
                     <motion.div
                       initial={{ y: -40, opacity: 0 }}

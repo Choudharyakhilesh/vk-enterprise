@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { IProducts, useProductsStore } from '@/store/products-store';
-import { ArrowLeft, Loader2, Tag, Shirt } from 'lucide-react'; // Added MessageCircle icon for button
+import { ArrowLeft, Loader2, Tag, Shirt, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -47,9 +47,9 @@ export default function ProductDetailsPage() {
       </div>
     );
   }
-
+  // bg - [#FDFBF7];
   return (
-    <div className="min-h-screen bg-[#FDFBF7]">
+    <div className="min-h-screen ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <button
           onClick={() => router.back()}
@@ -63,28 +63,53 @@ export default function ProductDetailsPage() {
       </div>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 ">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 ">
           {/* LEFT COLUMN: Main Image Only */}
           <div>
-            <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-stone-100 relative group shadow-lg border border-stone-100 sticky top-24">
+            <div className="relative w-full overflow-hidden rounded-2xl bg-stone-100 group shadow-lg border border-stone-100 sticky top-24">
               <img
                 src={product.images?.[selectedImage] || '/placeholder.png'}
                 alt={product.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-auto max-h-[100vh] transition-transform duration-700 group-hover:scale-105"
               />
+              {product.images?.length > 1 && (
+                <button
+                  onClick={() =>
+                    setSelectedImage((prev) => (prev === 0 ? product.images.length - 1 : prev - 1))
+                  }
+                  className="absolute left-3 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center
+               w-10 h-10 rounded-full bg-black/50 text-white
+               lg:hidden"
+                >
+                  <ChevronLeft className="w-6 h-6 text-white stroke-[2.5px]" />
+                </button>
+              )}
+
+              {/* RIGHT BUTTON */}
+              {product.images?.length > 1 && (
+                <button
+                  onClick={() =>
+                    setSelectedImage((prev) => (prev === product.images.length - 1 ? 0 : prev + 1))
+                  }
+                  className="absolute right-3 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center
+               w-10 h-10 rounded-full bg-black/50 text-white
+               lg:hidden"
+                >
+                  <ChevronRight className="w-6 h-6 text-white stroke-[2.5px]" />
+                </button>
+              )}
             </div>
-            {/* Thumbnails removed from here */}
           </div>
 
           {/* RIGHT COLUMN: Product Info & Gallery */}
           <div className="flex flex-col pt-4">
-            <div className="space-y-8">
+            <div className="space-y-4">
               {/* Title Section */}
               <div>
                 <p className="text-stone-400 uppercase tracking-[0.2em] text-sm mb-3 font-bold">
                   {product.category_name}
                 </p>
-                <h1 className="text-4xl md:text-5xl font-serif text-stone-900 mb-5 leading-tight">
+                <h1 className="text-2xl md:text-3xl font-serif text-stone-900 mb-5 leading-tight">
                   {product.title}
                 </h1>
                 <div className="inline-flex items-center px-4 py-1.5 bg-stone-900 text-stone-50 rounded-full text-sm font-medium tracking-wide">
@@ -127,7 +152,7 @@ export default function ProductDetailsPage() {
               </div>
 
               {/* ----- MOVED THUMBNAIL GALLERY HERE ----- */}
-              <div className="pt-4">
+              <div className="pt-2">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-stone-900 mb-4">
                   Product Gallery
                 </h3>
@@ -142,7 +167,7 @@ export default function ProductDetailsPage() {
                           : 'border-transparent opacity-50 hover:opacity-100'
                       }`}
                     >
-                      <img src={img} alt="thumbnail" className="w-full h-full object-cover" />
+                      <img src={img} alt="thumbnail" className="w-full h-full  object-contain" />
                     </button>
                   ))}
                 </div>

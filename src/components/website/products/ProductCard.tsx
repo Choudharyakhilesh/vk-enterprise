@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { ArrowUpRight, ChevronLeft, ChevronRight, Eye, Hash, Layers } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { useRef } from "react";
+import { Button } from '@/components/ui/button';
+import { ArrowUpRight, ChevronLeft, ChevronRight, Eye, Hash, Layers } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useRef } from 'react';
 
-import type { Swiper as SwiperType } from "swiper";
-import { Autoplay, EffectFade, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from 'swiper';
+import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-import { IProducts } from "@/store/products-store";
-import { useTopLoader } from "nextjs-toploader";
-import "swiper/css";
-import "swiper/css/effect-fade";
-import "swiper/css/pagination";
+import { IProducts } from '@/store/products-store';
+import { useTopLoader } from 'nextjs-toploader';
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+import 'swiper/css/pagination';
 
 interface ProductCardProps {
   product: IProducts;
@@ -38,7 +38,7 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
         swiperRef.current?.slideTo(0);
       }}
     >
-      <div className="relative aspect-[3/4] overflow-hidden bg-stone-200">
+      <div className="relative aspect-[11/18] overflow-hidden bg-[#F9F8F6]">
         <Swiper
           modules={[Pagination, Autoplay, EffectFade]}
           autoplay={{ delay: 2500, disableOnInteraction: false }}
@@ -138,9 +138,7 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
                 <Layers className="w-3.5 h-3.5 text-stone-500" />
               </div>
               <div className="flex gap-1 items-center">
-                <span className="text-xs  text-stone-400 font-medium leading-none">
-                  Material:
-                </span>
+                <span className="text-xs  text-stone-400 font-medium leading-none">Material:</span>
                 <span className="text-xs font-semibold text-stone-700">{product.fabric}</span>
               </div>
             </div>

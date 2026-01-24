@@ -1,6 +1,11 @@
-"use client";
+import { AboutSection } from '@/components/website/about-us/AboutPage';
+import { Metadata } from 'next';
 
-import { AboutSection } from "@/components/website/about-us/AboutPage";
+export const metadata: Metadata = {
+  title: 'Vastra Cloth Manufacturers and Exporters',
+  description: 'Vastra Cloth Manufacturers and Exporters',
+  icons: '/file.svg',
+};
 
 const AboutPage = () => {
   return <AboutSection />;
