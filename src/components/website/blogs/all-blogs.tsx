@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import { BlogsSkeleton } from "@/components/skeleton/blogs-skeleton";
-import { Button } from "@/components/ui/button";
-import BlogCustomPagination from "@/components/ui/form/custom-pagination";
-import Nodata from "@/lib/no-data";
-import { formatDateTimeToDDMMMYYYY } from "@/lib/utils";
-import { IBlog, useHomeStore } from "@/store/home-store";
-import { Calendar, Search } from "lucide-react";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useTopLoader } from "nextjs-toploader";
-import { useEffect, useState } from "react";
+import { BlogsSkeleton } from '@/components/skeleton/blogs-skeleton';
+import { Button } from '@/components/ui/button';
+import BlogCustomPagination from '@/components/ui/form/custom-pagination';
+import Nodata from '@/lib/no-data';
+import { formatDateTimeToDDMMMYYYY } from '@/lib/utils';
+import { IBlog, useHomeStore } from '@/store/home-store';
+import { Calendar, Search } from 'lucide-react';
+import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { useTopLoader } from 'nextjs-toploader';
+import { useEffect, useState } from 'react';
 
 export function AllBlogSection() {
   const router = useRouter();
   const { start } = useTopLoader();
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
 
   const { getAllBlogsList, allBlogsListData, allBlogsListLoading, getSearchDetails } =
     useHomeStore();
@@ -26,14 +26,12 @@ export function AllBlogSection() {
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
-      if (searchTerm.trim() !== "") {
-        // Agar kuch type kiya hai toh search API call karo
-        getSearchDetails({ type: "blog", query: searchTerm });
+      if (searchTerm.trim() !== '') {
+        getSearchDetails({ type: 'blog', query: searchTerm });
       } else {
-        // Agar search khali hai toh wapas normal list mangao
         getAllBlogsList(1);
       }
-    }, 500); // 500ms ka wait karega jab user typing rok dega
+    }, 500);
 
     return () => clearTimeout(delayDebounceFn);
   }, [searchTerm, getSearchDetails, getAllBlogsList]);
@@ -43,7 +41,7 @@ export function AllBlogSection() {
   const totalPages = allBlogsListData?.blogs?.last_page || 1;
 
   const handlePageChange = (targetPage: number) => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     getAllBlogsList(targetPage);
   };
 
@@ -57,8 +55,8 @@ export function AllBlogSection() {
                 Our Latest <span className="text-primary">Blogs</span>
               </h2>
               <p className="text-gray-600">
-                Explore our expert tips and trends in interior design and architecture to
-                transform your living space.
+                Explore our expert tips and trends in interior design and architecture to transform
+                your living space.
               </p>
             </div>
 

@@ -53,7 +53,7 @@ export function VKFooter() {
             <span className="text-9xl font-serif font-bold text-stone-900">V</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-24 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 relative z-10">
             {/* BRAND */}
             <div className="space-y-6">
               <Image
@@ -106,6 +106,30 @@ export function VKFooter() {
                   { label: 'About Us', href: '/about-us' },
                   { label: 'Contact Us', href: '/contact-us' },
                 ].map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="text-stone-500 font-normal hover:text-[#C29043] transition-colors text-sm  flex items-center group"
+                    >
+                      <p className="w-0  group-hover:w-4 transition-all duration-300 h-[1px] bg-[#C29043] mr-0 group-hover:mr-2" />
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* PRIVACY POLICY */}
+            <div>
+              <div className="flex items-center gap-2 mb-8">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#C29043]" />
+                <h3 className="text-stone-900 font-bold text-sm uppercase tracking-[0.2em]">
+                  Privacy Policy
+                </h3>
+              </div>
+
+              <ul className="space-y-4">
+                {[{ label: 'Privacy Policy', href: '/privacy-policy' }].map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
