@@ -35,7 +35,7 @@ export function QuickViewModal({ product, open, onClose }: QuickViewModalProps) 
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl p-0 overflow-hidden bg-white border-0 rounded-2xl gap-0">
+      <DialogContent className="max-w-4xl h-[600px] p-0 overflow-hidden bg-white border-0 rounded-2xl gap-0">
         <button
           type="button"
           onClick={onClose}
@@ -44,7 +44,7 @@ export function QuickViewModal({ product, open, onClose }: QuickViewModalProps) 
           <X className="h-4 w-4 text-stone-500" />
         </button>
 
-        <div className="grid md:grid-cols-2 h-[600px] max-h-[800px]">
+        <div className="grid md:grid-cols-2">
           {/* Left Side: Main Slider */}
           <div className="h-full bg-stone-50 relative">
             <SwiperReact
@@ -69,8 +69,8 @@ export function QuickViewModal({ product, open, onClose }: QuickViewModalProps) 
           </div>
 
           {/* Right Side: Details + Gallery */}
-          <div className="p-3 bg-white flex flex-col h-full">
-            <div className="flex-1">
+          <div className="p-3 flex flex-col h-[600px]">
+            <div className="flex-1 overflow-y-auto pr-1">
               <Badge variant="outline" className="mb-3 text-primary border-secondary">
                 {product.category_name}
               </Badge>
@@ -125,7 +125,7 @@ export function QuickViewModal({ product, open, onClose }: QuickViewModalProps) 
                           mainSwiper.slideTo(index);
                         }
                       }}
-                      className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all duration-300 ${
+                      className={`relative aspect-[3/5] rounded-lg overflow-hidden border-2 transition-all duration-300 ${
                         activeIndex === index
                           ? 'border-secondary ring-2 ring-secondary-100 opacity-100'
                           : 'border-stone-100 opacity-60 hover:opacity-100 hover:border-stone-300'
@@ -134,15 +134,14 @@ export function QuickViewModal({ product, open, onClose }: QuickViewModalProps) 
                       <img
                         src={img}
                         alt={`Thumbnail ${index + 1}`}
-                        className="w-full h-full object-contain bg-stone-100"
+                        className="w-full h-full  object-cover bg-stone-100"
                       />
                     </button>
                   ))}
                 </div>
               </div>
             </div>
-
-            <div className=" mt-auto">
+            <div className="">
               <Button
                 variant="default"
                 className="w-full"
