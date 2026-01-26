@@ -6,7 +6,6 @@ import {
   Mail,
   Phone,
   MapPin,
-  Lock,
   Eye,
   FileText,
   Globe,
@@ -158,9 +157,9 @@ export default function PrivacyPolicy() {
       <div className="max-w-7xl mx-auto px-6 mt-12">
         {/* Intro Text */}
         <div className="mb-12 p-6 bg-stone-50 rounded-xl border-l-4 border-primary italic text-stone-600">
-          In this privacy policy, "we", "our", and "us" stand for Vastra Exports. “You”, “Your”,
+          {` In this privacy policy, "we", "our", and "us" stand for Vastra Exports. “You”, “Your”,
           “Yours” stand for the website users. This policy explains how we collect, use, and protect
-          your information.
+          your information.`}
         </div>
 
         <div className="grid md:grid-cols-1 gap-6">
@@ -181,8 +180,8 @@ export default function PrivacyPolicy() {
           <div className="bg-primary text-white p-10 rounded-2xl shadow-xl mt-6">
             <h2 className="text-3xl font-bold mb-6 italic">9. Contact Us</h2>
             <p className="mb-10 opacity-90 font-light text-lg">
-              If you have any questions, concerns, or want to exercise your rights listed in section
-              6, please contact us:
+              {`If you have any questions, concerns, or want to exercise your rights listed in section
+              6, please contact us:`}
             </p>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="space-y-2">
