@@ -164,7 +164,7 @@ function PhoneInput<TFieldValues extends FieldValues>({
         <div className="flex">
           <Select open={isOpen} onOpenChange={setIsOpen} value={selectedCountry.code}>
             <SelectTrigger
-              className={`w-[80px] h-[46px] rounded-r-none border-r-0 ${triggerBgColor} ${
+              className={`w-[80px] h-[46px] shadow-none rounded-r-none  border-r border-[#d1d5dc]${triggerBgColor} ${
                 error ? 'border-red-500' : borderColor
               }`}
             >

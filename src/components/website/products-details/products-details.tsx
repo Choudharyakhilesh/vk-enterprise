@@ -161,7 +161,7 @@ export default function ProductDetailsPage() {
                     <button
                       key={idx}
                       onClick={() => setSelectedImage(idx)}
-                      className={`aspect-[3/4] rounded-lg overflow-hidden border-2 transition-all shadow-sm ${
+                      className={`aspect-[4/4] rounded-lg overflow-hidden border-2 transition-all shadow-sm ${
                         selectedImage === idx
                           ? 'border-secondary ring-2 ring-secondary-100 opacity-100'
                           : 'border-transparent opacity-50 hover:opacity-100'

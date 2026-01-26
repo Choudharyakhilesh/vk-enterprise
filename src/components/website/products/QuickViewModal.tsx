@@ -37,8 +37,9 @@ export function QuickViewModal({ product, open, onClose }: QuickViewModalProps) 
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-w-4xl p-0 overflow-hidden bg-white border-0 rounded-2xl gap-0">
         <button
+          type="button"
           onClick={onClose}
-          className="absolute right-4 top-4 z-50 p-2 bg-white/80 backdrop-blur-md rounded-full hover:bg-white transition-colors shadow-sm"
+          className="cursor-pointer absolute right-4 top-4 z-50 p-2 bg-white/80 backdrop-blur-md rounded-full hover:bg-white transition-colors shadow-sm focus:outline-none focus:ring-0"
         >
           <X className="h-4 w-4 text-stone-500" />
         </button>
@@ -68,7 +69,7 @@ export function QuickViewModal({ product, open, onClose }: QuickViewModalProps) 
           </div>
 
           {/* Right Side: Details + Gallery */}
-          <div className="p-3 bg-white">
+          <div className="p-3 bg-white flex flex-col h-full">
             <div className="flex-1">
               <Badge variant="outline" className="mb-3 text-primary border-secondary">
                 {product.category_name}
@@ -141,7 +142,7 @@ export function QuickViewModal({ product, open, onClose }: QuickViewModalProps) 
               </div>
             </div>
 
-            <div className="pt-10 mt-auto">
+            <div className=" mt-auto">
               <Button
                 variant="default"
                 className="w-full"

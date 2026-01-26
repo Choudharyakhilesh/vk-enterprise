@@ -5,7 +5,8 @@ export const ContactFormSchema = z.object({
     .string()
     .min(1, { message: "First Name is Requird" })
     .max(50, { message: "First name must be less than 50 characters" }),
-  last_name: z.string().optional(),
+  last_name: z.string().min(1, { message: "Last Name is Requird" })
+    .max(50, { message: "Last name must be less than 50 characters" }),
   email: z
     .string()
     .min(1, { message: "Email is Requird" })

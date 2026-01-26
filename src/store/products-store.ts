@@ -50,6 +50,11 @@ export type IStore = {
   productDeatilsData: IProducts | null;
   productDetailsLoading: boolean;
   getProductDetails: (data: object) => Promise<IResponseType | null>;
+
+  currentPage: number;
+  lastPage: number;
+  showLessProducts: () => void;
+  pageDataCounts: number[];
 };
 
 export const useProductsStore = create<IStore>((set) => ({
@@ -61,6 +66,11 @@ export const useProductsStore = create<IStore>((set) => ({
 
   productDeatilsData: null,
   productDetailsLoading: false,
+
+  currentPage: 1,
+  lastPage: 1,
+
+  pageDataCounts: [],
 
   getProductCategory: async () => {
     try {
@@ -82,22 +92,72 @@ export const useProductsStore = create<IStore>((set) => ({
       return err.response?.data ?? null;
     }
   },
+  // getAllProductsList: async (page: number = 1) => {
+  //   try {
+  //     set({ allProductsListLoading: true });
+
+  //     const response = await httpClient.get(`${ApiRoutes.products.product_list_page}?page=${page}`);
+  //     const resp = response.data;
+
+  //     set({
+  //       allProductsListData: resp?.products_data || null,
+  //       allProductsListLoading: false,
+  //     });
+  //     return resp;
+  //   } catch {
+  //     set({ allProductsListLoading: false });
+  //     return null;
+  //   }
+  // },
+
   getAllProductsList: async (page: number = 1) => {
     try {
       set({ allProductsListLoading: true });
-
       const response = await httpClient.get(`${ApiRoutes.products.product_list}?page=${page}`);
       const resp = response.data;
 
-      set({
-        allProductsListData: resp?.products_data || null,
-        allProductsListLoading: false,
+      const newData = resp?.products_data?.data || [];
+
+      set((state) => {
+        const currentData = state.allProductsListData || [];
+        const filteredNewData = newData.filter(
+          (newItem: IProducts) => !currentData.some((oldItem) => oldItem.id === newItem.id)
+        );
+
+        return {
+          allProductsListData: page === 1 ? newData : [...currentData, ...filteredNewData],
+          // 🔥 Har page ka naya count save karo
+          pageDataCounts: page === 1 ? [newData.length] : [...state.pageDataCounts, filteredNewData.length],
+          currentPage: resp?.products_data?.current_page || 1,
+          lastPage: resp?.products_data?.last_page || 1,
+          allProductsListLoading: false,
+        };
       });
       return resp;
     } catch {
       set({ allProductsListLoading: false });
       return null;
     }
+  },
+
+  showLessProducts: () => {
+    set((state) => {
+      const currentData = state.allProductsListData || [];
+      const counts = state.pageDataCounts;
+
+      if (state.currentPage > 1 && counts.length > 0) {
+        // 🔥 Aakhri page par jitna data aaya tha, sirf utna hi remove karo
+        const lastPageCount = counts[counts.length - 1];
+        const newData = currentData.slice(0, currentData.length - lastPageCount);
+
+        return {
+          allProductsListData: newData,
+          pageDataCounts: counts.slice(0, -1), // Aakhri count hata do
+          currentPage: state.currentPage - 1
+        };
+      }
+      return state;
+    });
   },
 
   getProductDetails: async (data) => {

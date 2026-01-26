@@ -10,11 +10,11 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@/components/ui/sheet'; // Shadcn Sheet component
+} from '@/components/ui/sheet';
 import Nodata from '@/lib/no-data';
 import { IProducts, useProductsStore } from '@/store/products-store';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ChevronRight, Search, X } from 'lucide-react';
+import { ChevronRight, Loader2, Search, X } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
 import { ProductCard } from './ProductCard';
 import { QuickViewModal } from './QuickViewModal';
@@ -35,13 +35,33 @@ export function AllProductList() {
   const [selectedCategories, setSelectedCategories] = useState<string[]>(['All']);
   const [tempSelected, setTempSelected] = useState<string[]>(['All']); // Drawer ke liye temporary state
 
-  const { getAllProductsList, allProductsListData, getProductCategory, allCategoryListData } =
-    useProductsStore();
+  const {
+    getAllProductsList,
+    allProductsListData,
+    getProductCategory,
+    allCategoryListData,
+    currentPage,
+    lastPage,
+    allProductsListLoading,
+    showLessProducts,
+  } = useProductsStore();
 
   useEffect(() => {
     getAllProductsList();
     getProductCategory();
   }, [getAllProductsList, getProductCategory]);
+
+  const handleLoadMore = () => {
+    if (currentPage < lastPage) {
+      getAllProductsList(currentPage + 1);
+    }
+  };
+
+  const handleShowLess = () => {
+    showLessProducts();
+    // Pura top par jane ki jagah thoda smooth adjustment
+    window.scrollBy({ top: -600, behavior: 'smooth' });
+  };
 
   useEffect(() => {
     const checkScreen = () => {
@@ -245,6 +265,29 @@ export function AllProductList() {
         </AnimatePresence>
       </motion.div>
 
+      {/* Load More / Show Less Buttons */}
+      <div className="mt-12 flex justify-center gap-4">
+        {/* Load More Button: Tabhi dikhega jab agla page available ho */}
+        {currentPage < lastPage && (
+          <Button onClick={handleLoadMore} disabled={allProductsListLoading} className="">
+            {allProductsListLoading ? (
+              <>
+                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+              </>
+            ) : (
+              'Load More Designs'
+            )}
+          </Button>
+        )}
+
+        {/* Show Less Button: Jab hum page 1 se aage nikal jayein tab dikhega */}
+        {currentPage > 1 && !allProductsListLoading && (
+          <Button variant="outline" onClick={handleShowLess} className="text-black">
+            Show Less
+          </Button>
+        )}
+      </div>
+
       {/* Empty State */}
       {filteredProducts.length === 0 && (
         <div className="text-center">
@@ -255,7 +298,7 @@ export function AllProductList() {
               setSearchQuery('');
               setSelectedCategories(['All']);
             }}
-            className=" text-black"
+            className=""
           >
             Clear All Filters
           </Button>

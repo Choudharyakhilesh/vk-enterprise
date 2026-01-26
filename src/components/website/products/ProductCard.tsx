@@ -63,7 +63,8 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
 
         {product?.images?.length > 1 && (
           <>
-            <div
+            <button
+              type="button"
               className="flex absolute left-3 top-1/2 -translate-y-1/2 z-40 w-9 h-9 items-center justify-center rounded-full bg-black/50 hover:bg-black/70 opacity-100  lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 shadow-md"
               onClick={(e) => {
                 e.stopPropagation();
@@ -71,9 +72,10 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
               }}
             >
               <ChevronLeft className="w-6 h-6 text-white stroke-[2.5px]" />
-            </div>
+            </button>
 
-            <div
+            <button
+              type="button"
               className="flex absolute right-3 top-1/2 -translate-y-1/2 z-40  w-9 h-9 items-center justify-center rounded-full  bg-black/50 hover:bg-black/70  opacity-100  lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-300 shadow-md"
               onClick={(e) => {
                 e.stopPropagation();
@@ -81,7 +83,7 @@ export function ProductCard({ product, onQuickView }: ProductCardProps) {
               }}
             >
               <ChevronRight className="w-6 h-6 text-white stroke-[2.5px]" />
-            </div>
+            </button>
           </>
         )}
 

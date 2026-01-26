@@ -200,21 +200,44 @@ import { TextAreaField } from '@/components/ui/form/textarea';
 import LoadingButton from '@/components/ui/loading-button';
 
 import { ContactFormSchemaStickey } from '@/schema/stickey-form-schema';
+import { ISettings, useHomeStore } from '@/store/home-store';
 import { useInquiryManagementStore } from '@/store/inquiry-store';
 import { useStickyDrawerStore } from '@/store/useStickyDrawerStore';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Mail, MessageSquare, MoveLeft, User, X } from 'lucide-react';
+import {
+  Mail,
+  MessageSquare,
+  MoveLeft,
+  User,
+  X,
+  Facebook,
+  Instagram,
+  Twitter,
+  Youtube,
+  Linkedin,
+  LucideIcon,
+} from 'lucide-react';
+import Link from 'next/link';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 import z from 'zod';
 
 type ContactFormData = z.infer<typeof ContactFormSchemaStickey>;
 
+const SOCIAL_ICON_MAP: Record<string, LucideIcon> = {
+  facebook_url: Facebook,
+  instagram_url: Instagram,
+  twitter_url: Twitter,
+  youtube_url: Youtube,
+  linkedln_url: Linkedin,
+};
+
 const StickyDrawer = () => {
   const { isOpen, openDrawer, closeDrawer } = useStickyDrawerStore();
 
   const { apiCreateInquirySticky, createInquiryStickeyLoading } = useInquiryManagementStore();
+  const { homePageData } = useHomeStore();
 
   const { control, handleSubmit, reset } = useForm<ContactFormData>({
     resolver: zodResolver(ContactFormSchemaStickey),
@@ -246,6 +269,11 @@ const StickyDrawer = () => {
       toast.error(res?.message || 'Something went wrong');
     }
   };
+
+  const socialLinks =
+    homePageData?.setting?.filter(
+      (item: ISettings) => SOCIAL_ICON_MAP[item.key] && item.value && item.value.trim() !== ''
+    ) || [];
 
   return (
     <>
@@ -367,6 +395,24 @@ const StickyDrawer = () => {
                 >
                   Submit
                 </LoadingButton>
+              </div>
+
+              <div className="flex justify-center space-x-4">
+                {socialLinks.map((item) => {
+                  const Icon = SOCIAL_ICON_MAP[item.key];
+
+                  return (
+                    <Link
+                      key={item.key}
+                      href={item.value}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-stone-100 text-stone-600 hover:bg-[#C29043] hover:text-white transition-all duration-300 shadow-sm"
+                    >
+                      <Icon size={16} strokeWidth={1.5} />
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </form>

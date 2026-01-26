@@ -139,7 +139,7 @@ const ContactPage = () => {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* FORM */}
           <div>
-            <div className="bg-neutral-900 border border-neutral-300 rounded-2xl p-4 lg:p-8 shadow-lg">
+            <div className="bg-neutral-900 border border-neutral-300 rounded-2xl p-4 shadow-lg">
               <h2 className="text-3xl font-bold mb-2 tracking-wide">Send a Message</h2>
               <p className="text-gray-400 mb-8">
                 Fill out the form and our team will reach out soon.
@@ -232,7 +232,7 @@ const ContactPage = () => {
           {/* MAP + FAQ */}
           <div className="space-y-8">
             {/* MAP */}
-            <div className="bg-neutral-900 border border-neutral-300 rounded-2xl shadow-xl overflow-hidden h-[520px]">
+            <div className="bg-neutral-900 border border-neutral-300 rounded-2xl shadow-xl overflow-hidden h-[489px]">
               {mapUrl ? (
                 <iframe
                   src={mapUrl}
