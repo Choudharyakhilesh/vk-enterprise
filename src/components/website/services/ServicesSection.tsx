@@ -1,47 +1,45 @@
-"use client";
-import React from "react";
-import { motion } from "framer-motion";
-import { Settings, Palette, Tag, Package, Ship, Sparkles, ArrowUpRight } from "lucide-react";
-import type { Variants } from "framer-motion";
-import Image from "next/image";
+'use client';
+import type { Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { ArrowUpRight, Package, Palette, Settings, Ship, Sparkles, Tag } from 'lucide-react';
 
 export function ServicesSection() {
   const services = [
     {
       icon: <Settings className="w-6 h-6" />,
-      title: "Manufacturing (OEM & ODM)",
-      desc: "Whether Your Design or Ours, the Branding Remains 100% Yours.",
-      num: "01",
+      title: 'Manufacturing (OEM & ODM)',
+      desc: 'Whether Your Design or Ours, the Branding Remains 100% Yours. Our Manufacturing, Your Branding.',
+      num: '01',
     },
     {
       icon: <Palette className="w-6 h-6" />,
-      title: "Design & Sampling",
-      desc: "Bring Your Ideas & Inspect Samples Before Bulk Orders.",
-      num: "02",
+      title: 'Design & Sampling',
+      desc: 'Try Before Placing Bulk Order. Bring Your Design Ideas & Inspect Samples. Your Satisfaction, Our Priority.',
+      num: '02',
     },
     {
       icon: <Tag className="w-6 h-6" />,
-      title: "Private Labelling",
-      desc: "Tape, Hang, Cut-Away, or DTF. All Labelling Solutions.",
-      num: "03",
+      title: 'Private Labelling',
+      desc: 'Tape, Hang, Cut-Away, Heat Transfer, or DTF Labels. We Have All Kinds of Labelling Solutions.',
+      num: '03',
     },
     {
       icon: <Package className="w-6 h-6" />,
-      title: "Packaging",
-      desc: "From Eco-Friendly to Embellished Gift Bags, We Craft Style.",
-      num: "04",
+      title: 'Packaging',
+      desc: 'From Simple Eco-Friendly to Embellished Gift Bags, We Craft Durable Yet Stylish Packaging.',
+      num: '04',
     },
     {
       icon: <Ship className="w-6 h-6" />,
-      title: "Global Exporting",
-      desc: "We Export Worldwide By Airways and Waterways Safely.",
-      num: "05",
+      title: 'Global Exporting',
+      desc: 'We Export Samples & Bulk Orders Worldwide By Airways and Waterways.',
+      num: '05',
     },
     {
       icon: <Sparkles className="w-6 h-6" />,
-      title: "Embellishments",
-      desc: "Elevate Designs with Elegant Hooks, Buttons, and Laces.",
-      num: "06",
+      title: 'Embellishments',
+      desc: 'Raise Your Designs with Elegant Hooks, Buttons, Laces, and More. Get Embellishment Material Supplies.',
+      num: '06',
     },
   ];
 
@@ -71,10 +69,10 @@ export function ServicesSection() {
 
   return (
     <section className="py-5">
-      {" "}
+      {' '}
       {/* Soft Linen Background */}
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-5x  mb-5">
+        <div className="  mb-5">
           <div>
             <div className="">
               <motion.span
@@ -82,30 +80,28 @@ export function ServicesSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 className="text-primary font-medium tracking-[0.2em] uppercase text-sm block mb-4"
               >
-                Our Capabilities
+                Our Services
               </motion.span>
               <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                className="text-3xl lg:text-6xl text-slate-900 leading-tight"
+                className="text-3xl lg:text-6xl text-slate-900 leading-tight text-center"
               >
-                Building & Supporting <br />
-                <span className="text-primary">Global Fashion Brands</span>
+                Building & Supporting
+                <span className="text-primary ml-2">Global Fashion Brands</span>
               </motion.h2>
             </div>
-            <motion.p
+            {/* <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               className="text-slate-500 max-w-xl text-sm leading-relaxed border-l border-slate-200 pl-3 pt-1"
             >
               From raw fabric to worldwide doorstep delivery, we handle the complexity while you
               focus on the vision.
-            </motion.p>
+            </motion.p> */}
           </div>
-          <div className="relative w-full h-70 rounded-2xl overflow-hidden lg:mt-0 mt-3">
-            {/* Black overlay */}
+          {/* <div className="relative w-full h-70 rounded-2xl overflow-hidden lg:mt-0 mt-3">
             <div className="absolute inset-0 bg-black/30 z-10" />
-
             <Image
               src="/GettyImages.jpg"
               alt="Services Background"
@@ -113,7 +109,7 @@ export function ServicesSection() {
               height={1000}
               className="w-full h-full object-cover "
             />
-          </div>
+          </div> */}
         </div>
 
         {/* Services Grid */}
@@ -128,7 +124,7 @@ export function ServicesSection() {
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ backgroundColor: "#ffffff" }}
+              whileHover={{ backgroundColor: '#ffffff' }}
               className="bg-white/80 backdrop-blur-sm p-5 group relative transition-all duration-500"
             >
               {/* Icon */}
@@ -142,7 +138,7 @@ export function ServicesSection() {
                 <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
               </h3>
 
-              <p className="text-slate-500  leading-relaxed font-light text-sm group-hover:text-slate-700 transition-colors">
+              <p className="text-slate-500  leading-relaxed font-light text-sm group-hover:text-slate-700 transition-colors text-justify">
                 {service.desc}
               </p>
 

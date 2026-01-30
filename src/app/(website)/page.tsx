@@ -1,5 +1,5 @@
 import { AboutUsSection } from '@/components/website/about-us/AboutUsSection';
-import { BlogSectionCrousal } from '@/components/website/blogs/blogs-crousal';
+import { FaqSection } from '@/components/website/faq-section/faq-section';
 import EnhancedHeroCarousel from '@/components/website/home-carousel/EnhancedHeroCarousel';
 import { ProductList } from '@/components/website/products/ProductList';
 import { ServicesSection } from '@/components/website/services/ServicesSection';
@@ -34,11 +34,12 @@ export default function Page() {
       <EnhancedHeroCarousel />
       <AboutUsSection />
       <ProductList />
-      <BlogSectionCrousal />
+      {/* <BlogSectionCrousal /> */}
       <ServicesSection />
       <WhyVastraSection />
       {/* <VideoTestimonialSlider /> */}
       <TestimonialsSection />
+      <FaqSection />
     </>
   );
 }

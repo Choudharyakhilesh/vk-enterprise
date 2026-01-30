@@ -48,7 +48,7 @@ export function AboutUsSection() {
   return (
     <section className="py-10 bg-[#FAFAF9]">
       <div className="max-w-7xl mx-auto px-3">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
           {/* Left Side: Content */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -63,15 +63,24 @@ export function AboutUsSection() {
             <h2 className="text-4xl lg:text-6xl text-slate-900 mb-8 leading-tight">
               We Build Brands By <span className="text-primary">Exporting Fashion</span>
             </h2>
-            <p className="text-slate-600 text-lg leading-relaxed mb-10 border-l-2 border-amber-200 pl-6">
-              Vastra is committed to supporting clothing brands worldwide with premium OEM and ODM
-              services. From Jaipur to the world, we handle everything from design to global
-              shipping.
+            <p className="text-slate-600 text-lg leading-relaxed mb-2 border-l-2 border-amber-200 pl-2 text-justify">
+              Vastra Cloth Manufacturers and Exporters is a well-established women’s clothing
+              manufacturer, designer, and wholesaler based in India. Established in 1997 in Jaipur,
+              Vastra specializes in manufacturing premium vacation wear for women.
+            </p>
+            <p className="text-slate-600 text-lg leading-relaxed mb-2 border-l-2 border-amber-200 pl-2 text-justify">
+              We’re custom clothing manufacturers committed to building and supporting clothing
+              brands worldwide since 3 decades with our Original Equipment Manufacturing (OEM) and
+              Original Design Manufacturing (ODM) services.
+            </p>
+            <p className="text-slate-600 text-lg leading-relaxed mb-10 border-l-2 border-amber-200 pl-2 text-justify">
+              From cloth manufacturing to designing, shipping, branding, packaging, and labeling, we
+              provide complete support for women’s clothing brands.
             </p>
             <Button
               onClick={() => router.push('/about-us')}
               size="lg"
-              className="flex items-center px-6 py-3 transition-all"
+              className="flex items-center px-6 py-3 transition-all mt-3"
             >
               Learn More About Us
               <ArrowRight className="w-5 h-5 ml-2" />

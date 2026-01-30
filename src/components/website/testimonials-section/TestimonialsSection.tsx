@@ -1,5 +1,6 @@
 'use client';
-import { Quote } from 'lucide-react';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Quote, Star } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 export function TestimonialsSection() {
@@ -7,32 +8,39 @@ export function TestimonialsSection() {
 
   const testimonials = [
     {
-      name: 'Jessica Martinez',
+      name: 'Camila Duartes',
       role: 'Fashion Enthusiast',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop',
+      // image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop',
       rating: 5,
-      text: 'ShopHub has completely transformed my shopping experience! The quality of products is outstanding.',
+      text: 'It has been over 5 seasons since our boutique has been sourcing beachwear and resortwear for women from Vastra. The fabric is always very breathable, the design is fully bespoke, and the finishing of every product is also premium. We highly recommend Vastra as the best women’s clothing manufacturers in India.',
     },
     {
-      name: 'Robert Johnson',
+      name: 'Santiago López',
       role: 'Tech Professional',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
+      // image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
       rating: 5,
-      text: 'Fast shipping and great deals. The website is easy to navigate and checkout is smooth.',
+      text: 'Vastra has played a pivotal role in establishing my brand in Latin America. The demand for Indian aesthetic, embroidered women’s western wear is high in my region. Vastra is an amazing team of custom clothing manufacturers that has fulfilled my dream of launching an Aesthetic Maxi Dress Brand. Their support has been magical for me.',
     },
     {
-      name: 'Emily Chen',
+      name: 'Alejandro Reyes',
       role: 'Small Business Owner',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop',
+      // image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop',
       rating: 5,
-      text: 'Amazing product selection and extremely convenient for busy schedules. Love the service!',
+      text: 'Wonderful packaging and excellent labelling. Vastra is my go-to partner for running my women’s apparel business smoothly. Their shipment always arrives on time, the communication is clear, and their stitching quality never disappoints my customers and me. Highly recommend Vastra as  reliable garment manufacturers in India!',
     },
     {
-      name: 'Michael Brown',
+      name: 'Sebastián Martínez',
       role: 'Fitness Coach',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop',
+      // image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop',
       rating: 5,
-      text: 'Top-notch quality and hassle-free return policy. Every purchase exceeded expectations.',
+      text: 'The designs are very modern, trendy, and exactly what we expect for the Latin American Markets. Their team understands our requirements really well, and they always deliver customized styles with commendable craftsmanship. What we found with Vastra is rare to find from most of the cloth manufacturers in India and even in the US.',
+    },
+    {
+      name: 'Gabriela Ramos',
+      role: 'Fitness Coach',
+      // image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop',
+      rating: 5,
+      text: 'Their fabric material is genuinely very good. It is light, breathable, and the colours are really trendy. From pastel to vibrant colours, I find a very wide range of dress materials for my resortwear business. The design is always in line with the latest fashion. And their packaging and labeling support keep me going well. Vastra is a versatile clothing manufacturer in India.',
     },
   ];
 
@@ -45,22 +53,22 @@ export function TestimonialsSection() {
 
   return (
     <section className="py-5 website-bg text-black relative overflow-hidden">
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container max-w-7xl mx-auto px-6  relative z-10">
+        <div className="text-primary font-medium tracking-[0.2em] uppercase text-sm block mb-4">
+          <span className="bg-secondary px-2 py-1 rounded-xl">Testimonials</span>
+        </div>
         {/* Heading */}
         <div className="text-center mb-5">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-wide">
-            What Our Customers Say
+          <h2 className="text-4xl md:text-4xl font-bold mb-4 tracking-wide ">
+            Know Us Better Through The Eyes of Importers Like You
           </h2>
-          <h3 className="text-xl text-primary font-light max-w-2xl mx-auto">
-            Trusted by thousands of happy customers
-          </h3>
         </div>
 
         {/* Main Testimonial Box */}
         <div className="max-w-4xl mx-auto mb-12">
           <div className="relative website-bg border border-white/10 rounded-3xl p-10 md:p-14 shadow-xl">
             {/* Quote Icon */}
-            <Quote className="absolute top-6 left-6 h-12 w-12 text-primary" />
+            <Quote className="absolute top-6 left-6 h-10 w-10 text-primary" />
 
             <div className="relative">
               {testimonials.map((testimonial, index) => (
@@ -73,21 +81,37 @@ export function TestimonialsSection() {
                   }`}
                 >
                   {/* Message */}
-                  <h3 className="text-xl text-center mb-5 text-black/80 leading-relaxed mt-3">
+                  <h3 className="text-xl text-center mb-5 text-black/80 leading-relaxed mt-3 text-justify">
                     {/* "{testimonial.text}" */}
                     {testimonial.text}
                   </h3>
 
                   {/* Author */}
                   <div className="flex items-center justify-center gap-4">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-16 h-16 rounded-full object-cover border border-white/20"
-                    />
+                    <Avatar className="h-12 w-12">
+                      {/* Image (optional) */}
+                      {/* <AvatarImage src={testimonial.image} alt={testimonial.name} /> */}
+
+                      {/* Fallback → First Letter */}
+                      <AvatarFallback className="text-lg text-primary font-semibold uppercase">
+                        {testimonial.name?.charAt(0)}
+                      </AvatarFallback>
+                    </Avatar>
                     <div className="text-left">
                       <h4 className="font-bold text-lg">{testimonial.name}</h4>
-                      <p className="text-gray-400">{testimonial.role}</p>
+                      {/* <p className="text-gray-400">{testimonial.role}</p> */}
+                      <div className="flex gap-1">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`h-4 w-4 ${
+                              i < testimonial.rating
+                                ? 'fill-amber-400 text-amber-400'
+                                : 'text-gray-300'
+                            }`}
+                          />
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -110,21 +134,6 @@ export function TestimonialsSection() {
             />
           ))}
         </div>
-
-        {/* Stats - Black & White version */}
-        {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 max-w-4xl mx-auto">
-          {[
-            { value: "50K+", label: "Happy Customers" },
-            { value: "4.9/5", label: "Avg. Rating" },
-            { value: "99%", label: "Satisfaction Rate" },
-            { value: "24/7", label: "Support Available" },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
-              <h3 className="text-3xl md:text-4xl font-bold mb-2 text-black">{stat.value}</h3>
-              <p className="text-gray-400">{stat.label}</p>
-            </div>
-          ))}
-        </div> */}
       </div>
     </section>
   );

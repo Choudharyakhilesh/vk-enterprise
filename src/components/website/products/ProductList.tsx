@@ -33,10 +33,10 @@ export function ProductList() {
     <div className="max-w-7xl mx-auto  py-5 bg-stone-50/50 ">
       {/* Header Section */}
       <div className="text-center mb-5 space-y-4">
-        <h2 className="text-3xl md:text-5xl text-stone-900">Latest Collections</h2>
+        <h2 className="text-3xl md:text-5xl text-stone-900">Our Products</h2>
         <div className="h-1 w-20 bg-primary mx-auto rounded-full" />
         <h3 className="text-lg text-stone-600 max-w-2xl mx-auto font-light">
-          {`Explore our exclusive range of premium women's wear, crafted for elegance and comfort.`}
+          {`Stitching Style & Comfort Together.`}
         </h3>
       </div>
 

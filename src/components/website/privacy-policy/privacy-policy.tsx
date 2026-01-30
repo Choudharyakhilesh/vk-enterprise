@@ -99,7 +99,7 @@ export default function PrivacyPolicy() {
               <p className="text-xs text-stone-500">Applicable to users in India</p>
             </div>
           </div>
-          <p className="bg-primary/5 p-4 rounded-lg text-sm italic text-stone-700">
+          <p className="bg-primary/5 p-4 rounded-lg text-sm  text-stone-700">
             Under these regulations, users may have rights related to access, correction, deletion,
             or restriction of their personal data. We honor such requests in accordance with
             applicable laws.
@@ -141,22 +141,18 @@ export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen pb-20 bg-white">
       {/* Header Section */}
-      <div className="py-16 text-center border-b border-stone-100 bg-[#F9F8F6]">
+      <div className="py-5 text-center border-b border-stone-100 bg-[#F9F8F6]">
         <div className="inline-flex items-center justify-center p-3 bg-secondary/10 rounded-full mb-4">
           <ShieldCheck className="w-8 h-8 text-primary" />
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-stone-900 mb-4 italic uppercase tracking-tight">
+        <h1 className="text-4xl md:text-2xl font-bold text-stone-900 mb-4  uppercase tracking-tight">
           Privacy Policy
         </h1>
-        {/* <p className="text-stone-500 max-w-2xl mx-auto font-light px-6">
-          Effective Date: 1 January 2026. Vastra Exports Pvt. Ltd. owns and operates
-          https://vastraexports.com/.
-        </p> */}
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 mt-12">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Intro Text */}
-        <div className="mb-12 p-6 bg-stone-50 rounded-xl border-l-4 border-primary italic text-stone-600">
+        <div className="mb-2 p-6 bg-stone-50 rounded-xl border-l-4 border-primary  text-stone-600">
           {` In this privacy policy, "we", "our", and "us" stand for Vastra Exports. “You”, “Your”,
           “Yours” stand for the website users. This policy explains how we collect, use, and protect
           your information.`}
@@ -178,7 +174,7 @@ export default function PrivacyPolicy() {
 
           {/* 9. Final Contact Section */}
           <div className="bg-primary text-white p-10 rounded-2xl shadow-xl mt-6">
-            <h2 className="text-3xl font-bold mb-6 italic">9. Contact Us</h2>
+            <h2 className="text-3xl font-bold mb-6 ">9. Contact Us</h2>
             <p className="mb-10 opacity-90 font-light text-lg">
               {`If you have any questions, concerns, or want to exercise your rights listed in section
               6, please contact us:`}
