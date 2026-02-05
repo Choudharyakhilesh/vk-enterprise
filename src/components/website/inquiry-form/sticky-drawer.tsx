@@ -277,12 +277,11 @@ const StickyDrawer = () => {
 
   return (
     <>
-      {/* 1. Sticky Button - Orange color & Vertical text */}
       <Button
         onClick={openDrawer}
         className="hidden md:flex fixed h-auto py-4 px-2 flex-col right-0 top-1/2 -translate-y-1/2 z-50 bg-primary hover:bg-primary rounded-l-md rounded-r-none transition-all shadow-lg"
       >
-        <MoveLeft className="mb-2 text-white" size={18} />
+        <MoveLeft className="mb-2 text-white " size={18} />
         <h3 className="[writing-mode:sideways-lr] font-medium">Let`s Talk</h3>
       </Button>
 

@@ -70,10 +70,10 @@ export function FaqSection() {
   };
 
   return (
-    <section className="bg-[#f8f9fa] mb-10">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="mb-5 mt-8 lg:mt-14">
+      <div className="max-w-7xl xl:mx-auto xl:px-6 md:px-0 px-6  md:mx-10">
         {/* Header Section */}
-        <div className="mb-5">
+        <div className="md:mb-5 mb-1">
           <h2 className="text-xl md:text-3xl font-bold text-gray-900 mb-4 tracking-tight">
             FAQs - Do You Have These Queries?
           </h2>
@@ -97,10 +97,10 @@ export function FaqSection() {
                 >
                   <button
                     onClick={() => toggleAccordion(index)}
-                    className="flex w-full items-center justify-between py-6 text-left focus:outline-none group transition-all"
+                    className="flex w-full items-center justify-between md:py-6 py-3 text-left focus:outline-none group transition-all"
                   >
                     <span
-                      className={`text-lg font-normal transition-colors duration-300 ${
+                      className={`md:text-lg text-md font-normal transition-colors duration-300 ${
                         isOpen
                           ? 'text-gray-800 hover:text-primary'
                           : 'text-gray-800 group-hover:text-primary'
@@ -138,17 +138,17 @@ export function FaqSection() {
         </div>
 
         {/* Show More/Less Button */}
-        <div className="mt-12 flex justify-end">
-          <Button onClick={() => setShowAll(!showAll)} className="flex gap-2">
+        <div className="md:mt-12 mt-5 flex justify-end">
+          <Button size="sm" onClick={() => setShowAll(!showAll)} className="flex gap-2">
             {showAll ? (
               <>
                 {' '}
-                <Minus className="w-5 h-5" /> SHOW LESS{' '}
+                <Minus className="w-4 h-4" /> SHOW LESS{' '}
               </>
             ) : (
               <>
                 {' '}
-                <Plus className="w-5 h-5" /> SHOW MORE{' '}
+                <Plus className="w-4 h-4" /> SHOW MORE{' '}
               </>
             )}
           </Button>

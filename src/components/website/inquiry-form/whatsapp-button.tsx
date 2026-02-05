@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 const WhatsAppButton = () => {
   const message = encodeURIComponent(
-    "Hello Vastra Team, I'm interested in your services and would like to chat."
+    'Hello Vastra Team, I would like to explore your collections.'
   );
   const whatsappUrl = `https://wa.me/917427873957?text=${message}`;
 
@@ -14,9 +14,24 @@ const WhatsAppButton = () => {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      initial={{ scale: 0, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      whileHover={{ scale: 1.1 }}
+      initial={{ scale: 0, opacity: 0, y: 0 }}
+      animate={{
+        scale: 1,
+        opacity: 1,
+
+        // y: [0, -12, 0],
+      }}
+      // transition={{
+
+      //   duration: 0.5,
+
+      //   y: {
+      //     duration: 2,
+      //     repeat: Infinity,
+      //     ease: 'easeInOut',
+      //   },
+      // }}
+      // whileHover={{ scale: 1.2, y: 0 }}
       whileTap={{ scale: 0.9 }}
       className="fixed w-[50px] h-[50px] bottom-18 md:bottom-5 left-3 lg:left-auto lg:right-6 z-[999] bg-[#25D366] text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-colors hover:bg-[#20ba5a]"
     >

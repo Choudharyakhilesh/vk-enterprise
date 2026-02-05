@@ -58,17 +58,17 @@ export function TestimonialsSection() {
           <span className="bg-secondary px-2 py-1 rounded-xl">Testimonials</span>
         </div>
         {/* Heading */}
-        <div className="text-center mb-5">
-          <h2 className="text-4xl md:text-4xl font-bold mb-4 tracking-wide ">
+        <div className="lg:text-center text-start mb-5">
+          <h2 className="text-xl md:text-4xl font-bold mb-4 tracking-wide ">
             Know Us Better Through The Eyes of Importers Like You
           </h2>
         </div>
 
         {/* Main Testimonial Box */}
-        <div className="max-w-4xl mx-auto mb-12">
-          <div className="relative website-bg border border-white/10 rounded-3xl p-10 md:p-14 shadow-xl">
+        <div className="max-w-6xl mx-auto">
+          <div className="relative website-bg border border-white/10 rounded-3xl p-5 md:p-14 shadow-xl">
             {/* Quote Icon */}
-            <Quote className="absolute top-6 left-6 h-10 w-10 text-primary" />
+            <Quote className="absolute md:top-6 top-2 left-6 md:h-10 md:w-10 h-5 w-5 text-primary" />
 
             <div className="relative">
               {testimonials.map((testimonial, index) => (
@@ -81,7 +81,7 @@ export function TestimonialsSection() {
                   }`}
                 >
                   {/* Message */}
-                  <h3 className="text-xl text-center mb-5 text-black/80 leading-relaxed mt-3 text-justify">
+                  <h3 className="md:text-xl text-md text-center mb-5 text-black/80 leading-relaxed mt-3 text-justify">
                     {/* "{testimonial.text}" */}
                     {testimonial.text}
                   </h3>
@@ -98,7 +98,7 @@ export function TestimonialsSection() {
                       </AvatarFallback>
                     </Avatar>
                     <div className="text-left">
-                      <h4 className="font-bold text-lg">{testimonial.name}</h4>
+                      <h4 className="font-bold md:text-lg text-md">{testimonial.name}</h4>
                       {/* <p className="text-gray-400">{testimonial.role}</p> */}
                       <div className="flex gap-1">
                         {Array.from({ length: 5 }).map((_, i) => (

@@ -1,5 +1,6 @@
 import { AboutUsSection } from '@/components/website/about-us/AboutUsSection';
 import { FaqSection } from '@/components/website/faq-section/faq-section';
+import { FinalCtc } from '@/components/website/final-ctc/final-ctc';
 import EnhancedHeroCarousel from '@/components/website/home-carousel/EnhancedHeroCarousel';
 import { ProductList } from '@/components/website/products/ProductList';
 import { ServicesSection } from '@/components/website/services/ServicesSection';
@@ -39,6 +40,7 @@ export default function Page() {
       <WhyVastraSection />
       {/* <VideoTestimonialSlider /> */}
       <TestimonialsSection />
+      <FinalCtc />
       <FaqSection />
     </>
   );

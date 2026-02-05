@@ -155,7 +155,7 @@ export function WhyVastraSection() {
   ];
 
   return (
-    <section className="py-16 lg:py-15 bg-white overflow-hidden">
+    <section className="my-5 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-8 items-center">
           {/* LEFT SIDE: IMAGE */}
@@ -166,7 +166,7 @@ export function WhyVastraSection() {
                 alt="Vastra Indian Craftsmanship"
                 width={1000}
                 height={600}
-                className="w-full h-[700px] object-cover transition-transform duration-700 hover:scale-105"
+                className="w-full lg:h-[700px] h-[300px] object-cover transition-transform duration-700 hover:scale-105"
               />
             </div>
           </div>
