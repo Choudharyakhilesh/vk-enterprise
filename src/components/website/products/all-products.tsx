@@ -183,7 +183,7 @@ export function AllProductList() {
               <button
                 key={cat}
                 onClick={() => handleCategorySelect(cat)} // ✅ updated function
-                className={`px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all border ${
+                className={`px-4 cursor-pointer py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all border ${
                   selectedCategories.length === 1 && selectedCategories[0] === cat
                     ? 'bg-stone-900 text-white border-stone-900'
                     : 'bg-white text-stone-500 border-stone-200 hover:border-stone-300'
@@ -258,7 +258,7 @@ export function AllProductList() {
               <Badge
                 key={cat}
                 variant="secondary"
-                className="bg-stone-100 text-stone-600 px-3 py-1 flex items-center gap-1"
+                className="bg-stone-100 text-stone-600 px-3 py-1 flex items-center gap-1 "
               >
                 {cat}
                 <X
