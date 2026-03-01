@@ -225,7 +225,7 @@ export const useProductsStore = create<IStore>((set) => ({
       }
 
       return resp;
-    } catch (error) {
+    } catch {
       set({ searchDetailsLoading: false });
       return null;
     }
