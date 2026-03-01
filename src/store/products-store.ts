@@ -26,6 +26,7 @@ export interface IProducts {
   fabric: string;
   name: string;
   related_products: IProducts[];
+  status: string;
 }
 
 export interface IProductsPage {
@@ -36,6 +37,7 @@ export interface IProductsPage {
 
 export interface IProductCategory {
   name: string;
+  id?: number;
 }
 
 export type IStore = {
@@ -45,11 +47,14 @@ export type IStore = {
 
   allProductsListData: IProducts[] | null;
   allProductsListLoading: boolean;
-  getAllProductsList: (page?: number) => Promise<IResponseType | null>;
+  getAllProductsList: (data?: object, page?: number) => Promise<IResponseType | null>;
 
   productDeatilsData: IProducts | null;
   productDetailsLoading: boolean;
   getProductDetails: (data: object) => Promise<IResponseType | null>;
+
+  searchDetailsLoading: boolean;
+  getSearchDetails: (data: object) => Promise<IResponseType | null>;
 
   currentPage: number;
   lastPage: number;
@@ -66,6 +71,8 @@ export const useProductsStore = create<IStore>((set) => ({
 
   productDeatilsData: null,
   productDetailsLoading: false,
+
+  searchDetailsLoading: false,
 
   currentPage: 1,
   lastPage: 1,
@@ -110,10 +117,16 @@ export const useProductsStore = create<IStore>((set) => ({
   //   }
   // },
 
-  getAllProductsList: async (page: number = 1) => {
+  getAllProductsList: async (data, page: number = 1) => {
     try {
       set({ allProductsListLoading: true });
-      const response = await httpClient.get(`${ApiRoutes.products.product_list}?page=${page}`);
+      const response = await httpClient.post(
+        `${ApiRoutes.products.product_list}?page=${page}`,
+        {
+          ...data, // single: { category_id: [3] }, multiple: { category_id: [3,4,2] }, no filter: {}
+        }
+      );
+
       const resp = response.data;
 
       const newData = resp?.products_data?.data || [];
@@ -185,6 +198,36 @@ export const useProductsStore = create<IStore>((set) => ({
         productDetailsLoading: false,
       });
       return err.response?.data ?? null;
+    }
+  },
+
+  getSearchDetails: async (data) => {
+    try {
+      set({ searchDetailsLoading: true });
+
+      const response = await httpClient.post(
+        `${ApiRoutes.search.search_items}`,
+        data
+      );
+
+      const resp = response.data;
+
+      if (resp.status && resp.type === "product") {
+        const resultData = resp.results?.data || [];
+
+        set({
+          allProductsListData: resultData,
+          currentPage: resp.results?.current_page || 1,
+          lastPage: resp.results?.last_page || 1,
+          pageDataCounts: [resultData.length],
+          searchDetailsLoading: false,
+        });
+      }
+
+      return resp;
+    } catch (error) {
+      set({ searchDetailsLoading: false });
+      return null;
     }
   },
 }));

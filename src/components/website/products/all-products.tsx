@@ -1,6 +1,6 @@
 'use client';
 import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox'; // Checkbox install kar lena agar nahi hai
+import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import {
   Sheet,
@@ -31,9 +31,12 @@ export function AllProductList() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isDesktop, setIsDesktop] = useState(false);
 
-  // 1. Multiple Category Selection State
+  // Category selection — naam store karo display ke liye
   const [selectedCategories, setSelectedCategories] = useState<string[]>(['All']);
-  const [tempSelected, setTempSelected] = useState<string[]>(['All']); // Drawer ke liye temporary state
+  const [tempSelected, setTempSelected] = useState<string[]>(['All']);
+
+  // ✅ Active filter mein category_id (number/string) store hoga, naam nahi
+  const [activeFilters, setActiveFilters] = useState<object>({});
 
   const {
     getAllProductsList,
@@ -44,33 +47,49 @@ export function AllProductList() {
     lastPage,
     allProductsListLoading,
     showLessProducts,
+    getSearchDetails,
   } = useProductsStore();
 
   useEffect(() => {
-    getAllProductsList();
+    // getAllProductsList({}, 1);
     getProductCategory();
-  }, [getAllProductsList, getProductCategory]);
+  }, [getProductCategory]);
+
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      if (searchQuery.trim() !== '') {
+        // 🔥 SEARCH API CALL
+        getSearchDetails({
+          type: 'product',
+          query: searchQuery,
+        });
+      } else {
+        // 🔁 Normal product list
+        getAllProductsList(activeFilters, 1);
+      }
+    }, 500);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchQuery, getSearchDetails, getAllProductsList, activeFilters]);
 
   const handleLoadMore = () => {
     if (currentPage < lastPage) {
-      getAllProductsList(currentPage + 1);
+      // ✅ activeFilters ke saath next page fetch karo
+      getAllProductsList(activeFilters, currentPage + 1);
     }
   };
 
   const handleShowLess = () => {
     showLessProducts();
-    // Pura top par jane ki jagah thoda smooth adjustment
     window.scrollBy({ top: -600, behavior: 'smooth' });
   };
 
   useEffect(() => {
     const checkScreen = () => {
-      setIsDesktop(window.innerWidth >= 1024); // lg breakpoint
+      setIsDesktop(window.innerWidth >= 1024);
     };
-
     checkScreen();
     window.addEventListener('resize', checkScreen);
-
     return () => window.removeEventListener('resize', checkScreen);
   }, []);
 
@@ -79,15 +98,38 @@ export function AllProductList() {
     return ['All', ...allCategoryListData.map((cat) => cat.name)];
   }, [allCategoryListData]);
 
-  // const visibleCategories = allCategories.slice(0, 6);
   const visibleCategories = useMemo(() => {
     return allCategories.slice(0, isDesktop ? 6 : 4);
   }, [allCategories, isDesktop]);
 
+  // ✅ Category name se id dhundo
+  const getCategoryIdByName = (name: string): number | null => {
+    const found = allCategoryListData?.find((cat) => cat.name === name);
+    return found?.id ?? null;
+  };
+
+  // ✅ Single category button click (top filter buttons)
+  const handleCategorySelect = (categoryName: string) => {
+    setSelectedCategories([categoryName]);
+    setTempSelected([categoryName]);
+
+    if (categoryName === 'All') {
+      // ✅ Clear filter — sab dikhao
+      setActiveFilters({});
+      getAllProductsList({}, 1);
+    } else {
+      const categoryId = getCategoryIdByName(categoryName);
+      // ✅ category_id single value bhejo — array nahi
+      const filters = categoryId ? { category_id: categoryId } : {};
+      setActiveFilters(filters);
+      getAllProductsList(filters, 1);
+    }
+  };
+
+  // Drawer ke liye toggle
   const handleCategoryToggle = (cat: string) => {
     setTempSelected((prev) => {
       if (cat === 'All') return ['All'];
-
       const newSelection = prev.filter((item) => item !== 'All');
       if (newSelection.includes(cat)) {
         const filtered = newSelection.filter((item) => item !== cat);
@@ -98,35 +140,39 @@ export function AllProductList() {
     });
   };
 
+  // ✅ Drawer "Apply Filters" button
   const applyFilters = () => {
     setSelectedCategories(tempSelected);
+
+    if (tempSelected.includes('All') || tempSelected.length === 0) {
+      setActiveFilters({});
+      getAllProductsList({}, 1);
+    } else {
+      // ✅ Multiple categories ke liye — id array bhejo
+      const ids = tempSelected.map((name) => getCategoryIdByName(name)).filter(Boolean); // null/undefined hata do
+
+      const filters = { category_id: ids };
+      setActiveFilters(filters);
+      getAllProductsList(filters, 1);
+    }
   };
-
-  // 3. Updated Filtering Logic for Multiple Categories
-  const filteredProducts = useMemo(() => {
-    return (
-      allProductsListData?.filter((product) => {
-        const matchesSearch = product.title?.toLowerCase().includes(searchQuery.toLowerCase());
-        const matchesCategory =
-          selectedCategories.includes('All') || selectedCategories.includes(product.category_name);
-
-        return matchesSearch && matchesCategory;
-      }) || []
-    );
-  }, [allProductsListData, searchQuery, selectedCategories]);
 
   const clearAllSelectedCategories = () => {
     setSelectedCategories(['All']);
-    setTempSelected(['All']); // drawer state bhi reset rahe
+    setTempSelected(['All']);
+    setActiveFilters({});
+    getAllProductsList({}, 1);
   };
 
+  const filteredProducts = allProductsListData || [];
+
   return (
-    <div className="max-w-7xl mx-auto px-4 py-5  min-h-screen">
+    <div className="max-w-7xl mx-auto px-4 py-5 min-h-screen">
       {/* Header Section */}
       <header className="mb-8 text-center space-y-6">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           <h1 className="text-4xl md:text-5xl font-serif text-stone-900 mb-4 tracking-tight">
-            The <span className=" text-primary font-light">Full</span> Catalog
+            The <span className="text-primary font-light">Full</span> Catalog
           </h1>
         </motion.div>
 
@@ -136,8 +182,8 @@ export function AllProductList() {
             {visibleCategories.map((cat) => (
               <button
                 key={cat}
-                onClick={() => setSelectedCategories([cat])}
-                className={`px-4 py-1.5 rounded-full text-[10px] font-bold  uppercase tracking-widest transition-all border ${
+                onClick={() => handleCategorySelect(cat)} // ✅ updated function
+                className={`px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all border ${
                   selectedCategories.length === 1 && selectedCategories[0] === cat
                     ? 'bg-stone-900 text-white border-stone-900'
                     : 'bg-white text-stone-500 border-stone-200 hover:border-stone-300'
@@ -147,10 +193,10 @@ export function AllProductList() {
               </button>
             ))}
 
-            {/* View More Drawer Trigger */}
+            {/* View More Drawer */}
             <Sheet onOpenChange={(open) => open && setTempSelected(selectedCategories)}>
               <SheetTrigger asChild>
-                <Button size="sm" variant="default" className="">
+                <Button size="sm" variant="default">
                   View More <ChevronRight className="w-4 h-4 ml-1" />
                 </Button>
               </SheetTrigger>
@@ -172,7 +218,6 @@ export function AllProductList() {
                         onCheckedChange={() => handleCategoryToggle(cat)}
                         className="cursor-pointer"
                       />
-
                       <label
                         onClick={() => handleCategoryToggle(cat)}
                         className="text-sm font-medium text-stone-700 cursor-pointer flex-1"
@@ -185,7 +230,7 @@ export function AllProductList() {
 
                 <SheetFooter className="absolute bottom-0 left-0 w-full p-6 border-t bg-white">
                   <SheetClose asChild>
-                    <Button size="sm" onClick={applyFilters} className="">
+                    <Button size="sm" onClick={applyFilters}>
                       Apply Filters
                     </Button>
                   </SheetClose>
@@ -206,7 +251,7 @@ export function AllProductList() {
           </div>
         </div>
 
-        {/* Selected Tags Display */}
+        {/* Selected Category Tags */}
         {!selectedCategories.includes('All') && (
           <div className="flex flex-wrap items-center gap-2">
             {selectedCategories.map((cat) => (
@@ -220,13 +265,21 @@ export function AllProductList() {
                   className="w-3 h-3 cursor-pointer"
                   onClick={() => {
                     const newCats = selectedCategories.filter((c) => c !== cat);
-                    setSelectedCategories(newCats.length === 0 ? ['All'] : newCats);
+                    if (newCats.length === 0 || newCats.includes('All')) {
+                      clearAllSelectedCategories();
+                    } else {
+                      setSelectedCategories(newCats);
+                      // Remaining categories ke ids nikalo
+                      const ids = newCats.map((name) => getCategoryIdByName(name)).filter(Boolean);
+                      const filters = { category_id: ids.length === 1 ? ids[0] : ids };
+                      setActiveFilters(filters);
+                      getAllProductsList(filters, 1);
+                    }
                   }}
                 />
               </Badge>
             ))}
 
-            {/* 🔥 Clear All Button */}
             <Button
               size="sm"
               variant="ghost"
@@ -245,7 +298,7 @@ export function AllProductList() {
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
       >
         <AnimatePresence mode="popLayout">
-          {filteredProducts.map((product) => (
+          {filteredProducts?.map((product) => (
             <motion.div
               key={product.id}
               layout
@@ -265,22 +318,18 @@ export function AllProductList() {
         </AnimatePresence>
       </motion.div>
 
-      {/* Load More / Show Less Buttons */}
+      {/* Load More / Show Less */}
       <div className="mt-12 flex justify-center gap-4">
-        {/* Load More Button: Tabhi dikhega jab agla page available ho */}
         {currentPage < lastPage && (
-          <Button onClick={handleLoadMore} disabled={allProductsListLoading} className="">
+          <Button onClick={handleLoadMore} disabled={allProductsListLoading}>
             {allProductsListLoading ? (
-              <>
-                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-              </>
+              <Loader2 className="mr-2 h-5 w-5 animate-spin" />
             ) : (
-              'Load More Designs'
+              'More Designs'
             )}
           </Button>
         )}
 
-        {/* Show Less Button: Jab hum page 1 se aage nikal jayein tab dikhega */}
         {currentPage > 1 && !allProductsListLoading && (
           <Button variant="outline" onClick={handleShowLess} className="text-black">
             Show Less
@@ -289,16 +338,15 @@ export function AllProductList() {
       </div>
 
       {/* Empty State */}
-      {filteredProducts.length === 0 && (
+      {filteredProducts.length === 0 && !allProductsListLoading && (
         <div className="text-center">
           <Nodata title="Products" />
           <Button
             variant="default"
             onClick={() => {
               setSearchQuery('');
-              setSelectedCategories(['All']);
+              clearAllSelectedCategories();
             }}
-            className=""
           >
             Clear All Filters
           </Button>
