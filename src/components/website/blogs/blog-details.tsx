@@ -50,13 +50,13 @@ export default function BlogDetails() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
           <div className="lg:col-span-3">
             <div className="lg:sticky lg:top-24">
-              <div className="relative w-full aspect-[3/4] md:aspect-[4/5] overflow-hidden rounded-3xl shadow-xl">
+              <div className="relative w-full  overflow-hidden rounded-xl shadow-xl">
                 {blogDeatilsData?.image ? (
                   <Image
                     src={blogDeatilsData.image}
                     alt={blogDeatilsData?.title || 'Blog image'}
-                    fill
-                    priority
+                    width={1000}
+                    height={1000}
                     className="object-cover"
                   />
                 ) : (
@@ -77,12 +77,12 @@ export default function BlogDetails() {
                     {formatDateTimeToDDMMMYYYY(blogDeatilsData.created_at)}
                   </span>
                 )}
-                <Badge
+                {/* <Badge
                   variant={blogDeatilsData?.status === '1' ? 'success' : 'destructive'}
                   className="text-[10px] font-bold uppercase tracking-widest"
                 >
                   {blogDeatilsData?.status === '1' ? '• Active' : '• Inactive'}
-                </Badge>
+                </Badge> */}
               </div>
 
               <h1 className="text-3xl md:text-3xl font-serif font-bold text-slate-900 leading-[1.2]">
@@ -151,7 +151,13 @@ export default function BlogDetails() {
                   <Image src={blog.image} alt={blog.title} fill className="object-contain" />
                 </div> */}
                 <div className="relative h-48 w-full bg-gray-50">
-                  <Image src={blog.image} alt={blog.title} fill className="object-contain" />
+                  <Image
+                    src={blog.image}
+                    alt={blog.title}
+                    width={1000}
+                    height={1000}
+                    className="object-contain"
+                  />
                 </div>
 
                 {/* Blog Info */}

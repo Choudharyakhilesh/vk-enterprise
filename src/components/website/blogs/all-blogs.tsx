@@ -94,12 +94,13 @@ export function AllBlogSection() {
                   className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col"
                 >
                   {/* Image */}
-                  <div className="relative h-60 w-full overflow-hidden">
+                  <div className="relative w-full  overflow-hidden">
                     <Image
                       src={blog.image}
                       alt={blog.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      width={1000}
+                      height={1000}
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
 
