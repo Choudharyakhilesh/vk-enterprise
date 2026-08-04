@@ -1,6 +1,5 @@
 'use client';
 
-import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { formatDateTimeToDDMMMYYYY } from '@/lib/utils';
 import { IBlog, useHomeStore } from '@/store/home-store';
