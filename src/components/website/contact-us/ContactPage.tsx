@@ -102,9 +102,9 @@ const ContactPage = () => {
   ];
 
   return (
-    <div className="min-h-screen  pb-20 bg-white text-black">
+    <div className="min-h-screen  pb-20 bg-white text-black mx-auto max-w-[1400px] px-4">
       {/* HERO */}
-      <section className="relative overflow-hidden  py-5 mb-10">
+      <section className="relative overflow-hidden  py-5 mb-10 ">
         <div className="container mx-auto px-4 relative z-10 text-center">
           <MessageSquare className="h-16 w-16 mx-auto mb-6 text-secondary" />
           <h1 className="text-5xl md:text-7xl font-bold tracking-wide mb-6 text-primary">

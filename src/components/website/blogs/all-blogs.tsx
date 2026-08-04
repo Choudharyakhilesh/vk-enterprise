@@ -46,7 +46,7 @@ export function AllBlogSection() {
   };
 
   return (
-    <section className="py-8 bg-gray-50">
+    <section className="py-8 bg-gray-50 mx-auto max-w-[1400px] px-4">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
           <div className="grid grid-cols-12 gap-4 items-center">

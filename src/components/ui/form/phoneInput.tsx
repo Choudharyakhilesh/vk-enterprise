@@ -173,7 +173,7 @@ function PhoneInput<TFieldValues extends FieldValues>({
               </SelectValue>
             </SelectTrigger>
             <SelectContent
-              className="p-0 max-h-[300px] w-[280px] bg-gray-100"
+              className="z-[100] p-0 max-h-[300px] w-[280px] bg-gray-100"
               onCloseAutoFocus={(e) => e.preventDefault()}
             >
               <div className="p-2 sticky top-0 bg-white z-20 border-b">

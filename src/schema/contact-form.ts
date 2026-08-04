@@ -16,5 +16,13 @@ export const ContactFormSchema = z.object({
     .min(10, { message: "Phone Number is Requird" })
     .regex(/^[0-9+\-\s()]*$/, { message: "Please enter a valid phone number" }),
 
-  message: z.string().optional(),
+  message: z
+    .string()
+    .optional()
+    .refine(
+      (value) => !value || value.trim().split(/\s+/).length <= 200,
+      {
+        message: "Message must not exceed 200 words",
+      }
+    ),
 });
