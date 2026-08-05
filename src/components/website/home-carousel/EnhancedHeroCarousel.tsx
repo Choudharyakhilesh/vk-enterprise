@@ -1,17 +1,17 @@
 'use client';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, EffectFade } from 'swiper/modules';
 import { motion } from 'framer-motion';
+import { Autoplay, EffectFade, Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/effect-fade';
+import 'swiper/css/navigation';
 
-import { ShoppingBag, Sparkles } from 'lucide-react';
-import Image from 'next/image';
-import { IHomePage, useHomeStore } from '@/store/home-store';
 import { Button } from '@/components/ui/button';
+import { IHomePage, useHomeStore } from '@/store/home-store';
+import { ShoppingBag } from 'lucide-react';
+import Image from 'next/image';
 
 type Banner = IHomePage['banners'][number];
 
@@ -20,6 +20,7 @@ export default function EnhancedHeroCarousel() {
   const { homePageData } = useHomeStore();
 
   const banners = homePageData?.banners || [];
+  const hasMultipleSlides = banners.length > 1;
 
   if (!banners.length) return null;
 
@@ -28,10 +29,10 @@ export default function EnhancedHeroCarousel() {
       <div className="relative w-full h-[600px] md:h-[700px] lg:h-[600px] rounded-4xl overflow-hidden bg-black">
         <Swiper
           modules={[Autoplay, Navigation, EffectFade]}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          navigation
+          autoplay={hasMultipleSlides ? { delay: 5000, disableOnInteraction: false } : false}
+          navigation={hasMultipleSlides}
           effect="fade"
-          loop
+          loop={hasMultipleSlides}
           className="h-full"
         >
           {banners.map((banner: Banner) => (
@@ -48,7 +49,7 @@ export default function EnhancedHeroCarousel() {
 
                   <div className="absolute mb-50 inset-0 flex flex-col justify-center items-center text-center px-6 -translate-y-6">
                     {/* SUBTITLE */}
-                    <motion.div
+                    {/* <motion.div
                       initial={{ y: -40, opacity: 0 }}
                       animate={isActive ? { y: 0, opacity: 1 } : {}}
                       transition={{ duration: 0.6 }}
@@ -56,7 +57,7 @@ export default function EnhancedHeroCarousel() {
                     >
                       <Sparkles className="w-5 h-5 text-gray-300" />
                       <p className="text-gray-300 font-light text-lg">{banner.short_descp}</p>
-                    </motion.div>
+                    </motion.div> */}
 
                     {/* TITLE */}
                     <motion.h1

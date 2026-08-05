@@ -63,17 +63,19 @@ export function AboutUsSection() {
             <h2 className="text-4xl lg:text-6xl text-slate-900 mb-8 leading-tight">
               We Build Brands By <span className="text-primary">Exporting Fashion</span>
             </h2>
-            <p className="text-slate-600 text-lg leading-relaxed mb-2 border-l-2 border-amber-200 pl-2 text-justify">
+            <p className="text-slate-600 text-lg leading-relaxed mb-2 border-l-2 border-amber-200 pl-2 text-justify [text-align-last:left] [word-spacing:-3px]">
               Vastra Cloth Manufacturers and Exporters is a well-established women’s clothing
               manufacturer, designer, and wholesaler based in India. Established in 1997 in Jaipur,
               Vastra specializes in manufacturing premium vacation wear for women.
             </p>
-            <p className="text-slate-600 text-lg leading-relaxed mb-2 border-l-2 border-amber-200 pl-2 text-justify">
+
+            <p className="text-slate-600 text-lg leading-relaxed mb-2 border-l-2 border-amber-200 pl-2 text-justify [text-align-last:left] [word-spacing:-3px]">
               We’re custom clothing manufacturers committed to building and supporting clothing
               brands worldwide since 3 decades with our Original Equipment Manufacturing (OEM) and
               Original Design Manufacturing (ODM) services.
             </p>
-            <p className="text-slate-600 text-lg leading-relaxed mb-10 border-l-2 border-amber-200 pl-2 text-justify">
+
+            <p className="text-slate-600 text-lg leading-relaxed mb-10 border-l-2 border-amber-200 pl-2 text-justify [text-align-last:left] [word-spacing:-3px]">
               From cloth manufacturing to designing, shipping, branding, packaging, and labeling, we
               provide complete support for women’s clothing brands.
             </p>
