@@ -66,7 +66,10 @@ export default function EnhancedHeroCarousel() {
                       transition={{ duration: 0.8 }}
                       className="text-4xl md:text-5xl lg:text-6xl text-gray-200 font-light mb-4"
                     >
-                      <span className="text-primary">{banner.title}</span>
+                      <span className="text-primary">
+                        {/* {banner.title}  */}
+                        Women's Apparel Manufacturer | Private Label | OEM ODM
+                      </span>
                     </motion.h1>
 
                     {/* DESCRIPTION */}

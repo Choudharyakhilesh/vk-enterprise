@@ -39,10 +39,10 @@ function Counter({ value }: { value: string }) {
 export function AboutUsSection() {
   const router = useRouter();
   const stats = [
-    { icon: <Factory />, value: '45k+', label: 'Factory Area' },
-    { icon: <Users />, value: '11k+', label: 'Team Members' },
-    { icon: <Globe />, value: '25k+', label: 'Global Importers' },
-    { icon: <Package />, value: '6M+', label: 'Items Yearly' },
+    { icon: <Factory />, value: '45K+ Sq. Ft.', label: 'Factory Area' },
+    { icon: <Users />, value: '50+', label: 'Team Members' },
+    { icon: <Globe />, value: '25+', label: 'Global Clients' },
+    { icon: <Package />, value: '60k+', label: 'Items Yearly' },
   ];
 
   return (
@@ -65,7 +65,7 @@ export function AboutUsSection() {
             </h2>
             <p className="text-slate-600 text-lg leading-relaxed mb-2 border-l-2 border-amber-200 pl-2 text-justify [text-align-last:left] [word-spacing:-3px]">
               Vastra Cloth Manufacturers and Exporters is a well-established women’s clothing
-              manufacturer, designer, and wholesaler based in India. Established in 1997 in Jaipur,
+              manufacturer, designer, and wholesaler based in India. Established in 2025 in Jaipur,
               Vastra specializes in manufacturing premium vacation wear for women.
             </p>
 
