@@ -68,7 +68,7 @@ export default function EnhancedHeroCarousel() {
                     >
                       <span className="text-primary">
                         {/* {banner.title}  */}
-                        Women's Apparel Manufacturer | Private Label | OEM ODM
+                        {`Women's Apparel Manufacturer | Private Label | OEM ODM`}
                       </span>
                     </motion.h1>
 
