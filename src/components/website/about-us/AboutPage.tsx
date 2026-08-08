@@ -20,12 +20,11 @@ export function AboutSection() {
   const { openDrawer } = useStickyDrawerStore();
   // Primary Color: #cc9547
   // Secondary Color: #e8d8bd
-
   const stats = [
-    { label: 'Annual Production', value: '60,00,000+', sub: 'Garments' },
-    { label: 'Workforce', value: '11,000', sub: 'Employees' },
-    { label: 'Factory Space', value: '45,000', sub: 'Square Feet' },
-    { label: 'Experience', value: '3 Decades', sub: 'Est. 1997' },
+    { label: 'Factory Area', value: '45K+', sub: 'Sq. Ft.' },
+    { label: 'Team Strength', value: '50+', sub: 'Team Members' },
+    { label: 'Global Reach', value: '25+', sub: 'Global Clients' },
+    { label: 'Annual Production', value: '60K+', sub: 'Items Yearly' },
   ];
 
   // Naya Updated Content for Core Business Areas
@@ -118,14 +117,14 @@ export function AboutSection() {
             </h2>
             <div className="space-y-4 text-stone-600 leading-relaxed text-lg font-light">
               <p>
-                Established in 1997, Vastra is 3-decade-old clothing manufacturers in Jaipur, India,
+                Established in 2025, Vastra is 3-decade-old clothing manufacturers in Jaipur, India,
                 specializing in customised women’s apparel. We are a B2B manufacturer and exporter
                 of resortwear, beachwear, and loungewear.
               </p>
               <p>
-                With 45,000 sq. ft. of space and 11,000 employees working in rotational shifts, we
-                produce over 6 million garments annually, helping brands scale with tailored design
-                and stitching services.
+                With 45,000+ sq. ft. of factory space and a skilled team of 50+ professionals, we
+                produce over 60,000 garments annually while serving 25+ clients globally with
+                tailored design and manufacturing solutions.
               </p>
             </div>
           </div>
