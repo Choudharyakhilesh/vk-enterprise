@@ -1,19 +1,19 @@
 'use client';
-import React from 'react';
+import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import {
-  Tag,
-  CheckCircle2,
-  Leaf,
   Award,
+  CheckCircle2,
   Globe2,
   Layers,
-  Scissors,
+  Leaf,
   MoveRight,
+  Scissors,
   Sparkles,
+  Tag,
 } from 'lucide-react';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
+import { useState } from 'react';
 
 export default function AllServicesSection() {
   // PDF Data: Label Types [cite: 26, 29, 32, 35, 38, 41]
@@ -49,6 +49,79 @@ export default function AllServicesSection() {
       icon: <Leaf className="w-5 h-5" />,
     },
   ];
+
+  function FAQAccordion() {
+    const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+    const faqs = [
+      {
+        question: 'Can You Design Labels for Us If We Have No Idea?',
+        answer:
+          'Yes. Vastra is one of the highly experienced women’s clothing manufacturers in India. If you do not have any prior ideation, our design team can create a private label from scratch that perfectly suits your brand image and target audience.',
+      },
+      {
+        question: 'Can We Get Fully Customised Labeling?',
+        answer:
+          'Absolutely. Vastra specialises in providing fully customised labeling solutions. If you already have a concept or design in mind, our team will deliver a 100% replica that matches your brand’s vision and expectations.',
+      },
+      {
+        question: 'Do You Practice International Labeling and Compliance Standards?',
+        answer:
+          'Yes, definitely. Every label manufactured by Vastra complies with domestic and international regulations, including wash care instructions, fabric composition, country of origin, and export compliance norms.',
+      },
+      {
+        question: 'Can We Use Our Own Label Suppliers?',
+        answer:
+          'Yes. If your brand already works with another label supplier but wants design or manufacturing services from Vastra, we fully support that. Our clients are free to choose which services they want from us and which from others — convenience always comes first.',
+      },
+    ];
+
+    return (
+      <div className="space-y-4">
+        {faqs.map((faq, index) => {
+          const isOpen = openIndex === index;
+
+          return (
+            <div
+              key={index}
+              className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
+                isOpen ? 'border-primary/30 shadow-sm' : 'border-slate-200'
+              }`}
+            >
+              <button
+                type="button"
+                onClick={() => setOpenIndex(isOpen ? null : index)}
+                className="w-full flex items-center justify-between gap-6 p-6 text-left  cursor-pointer"
+                aria-expanded={isOpen}
+              >
+                <h4 className="font-semibold text-slate-900">{faq.question}</h4>
+
+                <span
+                  className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-primary/10 text-primary transition-transform duration-300 ${
+                    isOpen ? 'rotate-180' : ''
+                  }`}
+                >
+                  <span className="text-xl leading-none">+</span>
+                </span>
+              </button>
+
+              <div
+                className={`grid transition-all duration-300 ease-in-out ${
+                  isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                }`}
+              >
+                <div className="overflow-hidden">
+                  <div className="px-6 pb-6">
+                    <p className="text-slate-600 text-sm leading-relaxed max-w-4xl">{faq.answer}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
 
   // PDF Data: Materials [cite: 48, 51, 55, 59, 63, 68]
   const materials = [
@@ -141,7 +214,7 @@ export default function AllServicesSection() {
 
       {/* --- Vastra Philosophy Section --- */}
       <section className="py-5 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-3">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -225,7 +298,7 @@ export default function AllServicesSection() {
       {/* --- USPs Section --- [cite: 72, 74, 85] */}
       {/* --- USP Philosophy Section --- */}
       <section className="py-5 bg-white ">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-3">
           {/* Heading */}
           <div className="text-center mb-5">
             <h2 className="text-3xl md:text-3xl font-light mb-5">
@@ -314,14 +387,14 @@ export default function AllServicesSection() {
 
       {/* --- Services Grid --- [cite: 26, 48] */}
       <section className="py-5 bg-slate-50/50">
-        <div className="max-w-7xl mx-auto px-6 text-center mb-16">
+        <div className="max-w-7xl mx-auto px-3 text-center mb-16">
           <h2 className="text-3xl md:text-3xl font-light mb-4">What Kind of Labels Can We Make?</h2>
           <p className="text-slate-500 text-md">
             From brand identity to tailored care instructions, we provide it all.
           </p>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="max-w-7xl mx-auto px-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {labelTypes.map((label, idx) => (
             <motion.div
               key={idx}
@@ -343,7 +416,7 @@ export default function AllServicesSection() {
         <div className="absolute top-0 right-0 opacity-10">
           <Globe2 className="w-96 h-96 -mr-20 -mt-20" />
         </div>
-        <div className="max-w-7xl mx-auto px-5 relative z-10">
+        <div className="max-w-7xl mx-auto px-3 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-4xl font-light mb-6">Still Wondering Why Choose Us?</h2>
@@ -433,9 +506,9 @@ export default function AllServicesSection() {
 
       {/* --- FAQs Section --- */}
       <section className="py-5 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-3">
           {/* Heading */}
-          <div className="text-center mb-5">
+          {/* <div className="text-center mb-5">
             <h2 className="text-3xl md:text-3xl font-light mb-5">
               FAQs – Do You Have Any of These Queries?
             </h2>
@@ -443,55 +516,27 @@ export default function AllServicesSection() {
               We’ve answered some of the most common questions brands ask us before starting their
               private labeling journey with Vastra.
             </p>
-          </div>
+          </div> */}
 
           {/* FAQ Items */}
-          <div className="space-y-6">
-            {/* FAQ 1 */}
-            <div className="border border-slate-200 rounded-2xl p-6">
-              <h4 className="font-semibold mb-2">
-                Can You Design Labels for Us If We Have No Idea?
-              </h4>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Yes. Vastra is one of the highly experienced women’s clothing manufacturers in
-                India. If you do not have any prior ideation, our design team can create a private
-                label from scratch that perfectly suits your brand image and target audience.
-              </p>
-            </div>
+          <section className="py-5 bg-white">
+            <div className="max-w-6xl mx-auto px-6">
+              {/* Heading */}
+              <div className="text-center mb-10">
+                <h2 className="text-3xl md:text-3xl font-light mb-5">
+                  FAQs – Do You Have Any of These Queries?
+                </h2>
 
-            {/* FAQ 2 */}
-            <div className="border border-slate-200 rounded-2xl p-6">
-              <h4 className="font-semibold mb-2">Can We Get Fully Customised Labeling?</h4>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Absolutely. Vastra specialises in providing fully customised labeling solutions. If
-                you already have a concept or design in mind, our team will deliver a 100% replica
-                that matches your brand’s vision and expectations.
-              </p>
-            </div>
+                <p className="text-slate-500 max-w-3xl mx-auto leading-relaxed">
+                  We’ve answered some of the most common questions brands ask us before starting
+                  their private labeling journey with Vastra.
+                </p>
+              </div>
 
-            {/* FAQ 3 */}
-            <div className="border border-slate-200 rounded-2xl p-6">
-              <h4 className="font-semibold mb-2">
-                Do You Practice International Labeling and Compliance Standards?
-              </h4>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Yes, definitely. Every label manufactured by Vastra complies with domestic and
-                international regulations, including wash care instructions, fabric composition,
-                country of origin, and export compliance norms.
-              </p>
+              {/* FAQ Accordion */}
+              <FAQAccordion />
             </div>
-
-            {/* FAQ 4 */}
-            <div className="border border-slate-200 rounded-2xl p-6">
-              <h4 className="font-semibold mb-2">Can We Use Our Own Label Suppliers?</h4>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Yes. If your brand already works with another label supplier but wants design or
-                manufacturing services from Vastra, we fully support that. Our clients are free to
-                choose which services they want from us and which from others — convenience always
-                comes first.
-              </p>
-            </div>
-          </div>
+          </section>
         </div>
       </section>
 

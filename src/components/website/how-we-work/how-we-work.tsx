@@ -94,9 +94,9 @@ const cardVariants = {
 };
 
 export default function HowWeWork() {
-  const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  // const scrollToContact = () => {
+  //   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  // };
 
   return (
     <section className="relative overflow-hidden bg-[#faf9f6] py-5">
