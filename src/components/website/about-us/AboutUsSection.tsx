@@ -57,7 +57,7 @@ export function AboutUsSection() {
             transition={{ duration: 0.9, ease: 'easeOut' }}
           >
             <span className="text-sm font-medium tracking-widest text-primary uppercase mb-4 block">
-              Who We Are & What We Do sasasasasa?
+              Who We Are & What We Do?
               {/* Who We Are & What Vastra Does? */}
             </span>
             <h2 className="text-4xl lg:text-6xl text-slate-900 mb-8 leading-tight">
